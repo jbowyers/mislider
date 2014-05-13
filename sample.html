@@ -1,0 +1,145 @@
+﻿<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge;chrome=1">
+    <title>MI Slider</title>
+    <link href="styles/mis-styles.min.css" rel="stylesheet" type="text/css" />
+    <style>
+    
+    </style>
+    <script src="scripts/html5shiv.min.js"></script>
+    <!-- Load jQuery -->
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <script>window.jQuery || document.write('<script src="scripts/jquery/jquery-1.11.0.min.js"><\/script>')</script>
+    <script src="scripts/mislider.js" type="text/javascript"></script>
+    <script type="text/javascript">
+        jQuery(function ($) {
+            var slider = $('.mis-stage').miSlider({
+                //  The speed of the slide transition in milliseconds. Options: positive integer. Default: 700
+                speed: 500,
+                //  slide pause time between transitions in milliseconds. Options: false, positive integer. false = Autoplay off. Default: 4000
+                pause: 500,
+                //  The number of slides to increment with Autoplay and Nav Buttons. Options: positive or negative integer. Positive integer = Slide left. Negative integer = Slide right. Default: 1
+                increment: -2,
+                //  The height of the stage in px. Options: false or positive integer. false = height is calculated using maximum slide heights. Default: false
+                stageHeight: false,
+                //  Number of slides visible at one time. Options: false or positive integer. false = Fit as many as possible.  Default: 1
+                slidesOnStage: false,
+                //  Continuous motion - Boolean. true = slides loop in one direction if possible. Default: true
+                slidesContinuous: true,
+                //  The location of the current slide on the stage. Options: 'left', 'right', 'center'. Defualt: 'left'
+                slidePosition: 'left',
+                //  The slide to start on. Options: 'beg', 'mid', 'end' or slide number starting at 1 - '1','2','3', etc. Defualt: 'beg'
+                slideStart: 'end',
+                //  The width of the current slide in px. Options: false or positive integer. false = width is the maximum of the existing slide widths. Default: false
+                slideWidth: false,
+                //  The relative percentage scaling factor of the current slide - other slides are scaled down. Options: positive number 100 or higher. 100 = No scaling. Defualt: 100
+                slideScaling: 150,
+                //  The vertical offset of the slide center as a percentage of slide height. Options:  positive or negative number. Neg value = up. Pos value = down. 0 = No offset. Default: 0
+                offsetV: -4,
+                //  Center slide contents vertically - Boolean. Default: false
+                centerV: true,
+                //  Enable numbered list navigation - Boolean.  Default: true
+                navList: true,
+                //  Enable prev and next button navigation - Boolean.  Default: true
+                navButtons: true,
+                //  Always show prev and next button navigation except when transitioning - Boolean. Default: false
+                navButtonsShow: false,
+                //  Opacity of the prev and next button navigation when not transitioning. Options: Number between 0 and 1. 0 (transparent) - 1 (opaque). Default: .5
+                navButtonsOpacity: 0.8,
+                //  Randomize the order of the slides - Boolean. Default: false
+                randomize: true,
+                //  The slides loaded call back function - called when slides have loaded.
+                slidesLoaded: false,
+                //  The slide transition before call back function - called before the slide transition.
+                beforeTrans: false,
+                //  The slide transition complete call back function - called at the end of a slide transition.
+                afterTrans: false,
+                //  The CSS class that will be applied to the stage element. Defualt: 'mis-stage'
+                classStage: 'mis-stage',
+                //  The CSS class that will be applied to the slider element. Defualt: 'mis-slider'
+                classSlider: 'mis-slider',
+                //  The CSS class that will be applied to each slide element. Defualt: 'mis-slide'
+                classSlide: 'mis-slide',
+                //  The CSS class that will be applied to the parent of the prev and next button navigation elements. Defualt: 'mis-nav-buttons'
+                classNavButtons: 'mis-nav-buttons',
+                //  The CSS class that will be applied to the parent of the numbered list navigation elements Defualt: 'mis-nav-list'
+                classNavList: 'mis-nav-list',
+                //  The selector used to select the slider element - Descendant of the stage. Default: 'ol'
+                selectorSlider: 'ol',
+                //  The selector used to select each slide element - Descendant of the slider. Default: 'li'
+                selectorSlide: 'li',
+                //  Use Modernizr to test feature support - csstransforms
+                modernizrBool: false,
+
+            });
+        });
+    </script>
+</head>
+<body>
+    <div id="wrapper">
+        <aside class="mis-stage">
+            <ol class="mis-slider">
+                <li class="mis-slide">
+                    <a href="#" class="mis-container">
+                        <figure>
+                            <img src="images/garden01.jpg" alt="Pink Water Lillies">
+                            <figcaption>Pink Water Lillies</figcaption>
+                        </figure>
+                    </a>
+                </li>
+                <li class="mis-slide">
+                    <a href="#" class="mis-container">
+                        <figure>
+                            <img src="images/garden02.jpg" alt="Pond with Lillies">
+                            <figcaption>Pond with Lillies</figcaption>
+                        </figure>
+                    </a>
+                </li>
+                <li class="mis-slide">
+                    <a href="link" class="mis-container">
+                        <figure>
+                            <img src="images/garden03.jpg" alt="Hidden Pond">
+                            <figcaption>Hidden Pond</figcaption>
+                        </figure>
+                    </a>
+                </li>
+                <li class="mis-slide">
+                    <a href="#" class="mis-container">
+                        <figure>
+                            <img src="images/garden04.jpg" alt="Shrine">
+                            <figcaption>Shrine</figcaption>
+                        </figure>
+                    </a>
+                </li>
+                <li class="mis-slide">
+                    <a href="#" class="mis-container">
+                        <figure>
+                            <img src="images/garden05.jpg" alt="White Water Lillies">
+                            <figcaption>White Water Lillies</figcaption>
+                        </figure>
+                    </a>
+                </li>
+                <li class="mis-slide">
+                    <a href="#" class="mis-container">
+                        <figure>
+                            <img src="images/garden06.jpg" alt="Garden Walkway">
+                            <figcaption>Garden Walkway</figcaption>
+                        </figure>
+                    </a>
+                </li>
+                <li class="mis-slide">
+                    <a href="#" class="mis-container">
+                        <figure>
+                            <img src="images/garden07.jpg" alt="Lilly with Bee">
+                            <figcaption>Lilly with Bee</figcaption>
+                        </figure>
+                    </a>
+                </li>
+            </ol>
+        </aside>
+    </div>
+</body>
+</html>
