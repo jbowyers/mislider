@@ -99,6 +99,7 @@
 		o.navList = false;                              //  The nav list element
 		o.navListItems = false;                         //  The nav list items collection
 		o.slideCurrent = false;                         //  Current slide
+		o.animatedElements = $();                       //  A collection of all the elements that animate 
 
 		//   Calculated Widths and Heights
 		o.stageWidth = 0;                               //  The existing width of the stage
@@ -153,6 +154,7 @@
 			o.slider = o.stage.children(o.options.selectorSlider).first();  //  Only one slider per stage
 			o.slides = o.slider.children(o.options.selectorSlide);
 			o.slidesLengthOrig = o.slides.length;
+			o.animatedElements = o.animatedElements.add(o.slider);
 
 		    //  Initiate current index
 			if (String(o.options.slideStart) === 'beg') {
@@ -211,9 +213,11 @@
 			    o.optionsInit.increment = o.increment;
 			}
 
+			
 		    //  Add previous and next nav buttons
 			if (o.options.navButtons) {
 			    o.addNavButtons(o.stage);
+			    o.animatedElements = o.animatedElements.add(o.navButtons);
 			    if (!o.options.navButtonsShow) {
 			        o.navButtonsFade = true;
 			    }
@@ -248,7 +252,21 @@
                             o.autoplayOff();
 			            }
 			            if (o.navButtonsFade) {
-			                o.navButtons.fadeTo(400, o.navButtonsOpacity);
+			                if (!o.animatedElements.is(':animated')) {
+			                    o.navButtons.fadeTo(400, o.navButtonsOpacity);
+			                } else {
+			                    if ($.isFunction(o.after)) {
+			                        var after = o.after;
+			                        o.after = function () {
+			                            after();
+			                            o.navButtons.fadeTo(400, o.navButtonsOpacity);
+			                        };
+			                    } else {
+			                        o.after = function () {
+			                            o.navButtons.fadeTo(400, o.navButtonsOpacity);
+			                        };
+			                    }
+			                }
 			            }
 			        },
 			        'mouseleave': function () {
@@ -435,6 +453,7 @@
 
 			//  Update current slide
 			o.slideCurrent = o.slides.eq(o.indexCurrent);
+			o.animatedElements = o.animatedElements.add(o.slides);
 
 			//  Set the horizontal position, width and other CSS of the slider ---------------------------------
 
@@ -459,7 +478,7 @@
 		o.transition = function (indexTo, beforeTrans, afterTrans, navButtonsFadeIn) {
 
 		    //  If slider is not animated and indexTo != current index - continue 
-		    if (!o.slider.is(':animated') && !o.slides.is(':animated') && !(o.navButtons && o.navButtons.is(':animated')) && indexTo !== o.indexCurrent) {
+		    if (!o.animatedElements.is(':animated') && indexTo !== o.indexCurrent) {
 
 		        //  Define indexes that might be adjusted
 		        var indexToAdjusted = indexTo;
@@ -735,7 +754,7 @@
 		        if (!o.stage.find(':hover').length) {   // slider is not in hover state
 		            o.timer = setInterval(function () {
                         //  if not transitioning do transition
-		                if (!o.slider.is(':animated') && !o.slides.is(':animated') && !(o.navButtons && o.navButtons.is(':animated'))) {
+		                if (!o.animatedElements.is(':animated')) {
 		                    o.transition(o.indexCurrent + incr);
 		                }
 		            }, o.pause);
@@ -910,10 +929,18 @@
 		
 		//  Reset Slider ----------------------------------------------------------------------------------
 		o.resetSlider = function () {
-		    if (o.slider.is(':animated') || o.slides.is(':animated') || (o.navButtons && o.navButtons.is(':animated'))) {
+		    if (o.animatedElements.is(':animated')) {
 
 		        //  Reset slider after transition has finished
-		        o.after = o.resetSlider;    
+		        if ($.isFunction(o.after)) {
+		            var after = o.after;
+		            o.after = function () {
+		                after();
+		                o.resetSlider;
+		            };
+		        } else {
+		            o.after = o.resetSlider;
+		        }   
 
 			} else {
 

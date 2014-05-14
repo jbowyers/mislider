@@ -26,12 +26,12 @@
         /*  Set slide width and padding */
         .mis-slide {
             /*  Set width in pixels to restrict width of slides 
-                for multi-item slider, or set width to 100%
+                for multi-item slider, default is 100%
                 for single-item slider. Use padding to add space 
                 between slides */
-	        width: 360px;
-            height: 360px;
-	        padding: 40px;
+	        width: 100%;
+            height: auto;
+	        padding: 0;
             display: block;
             position: relative;
             float: left;
@@ -55,6 +55,7 @@
         width: 100%;
         margin: 0 auto; /* center it */
         z-index: 300;
+        padding: 0;
 	}
 		.mis-nav-list li {
 			display: inline-block;
@@ -115,30 +116,7 @@
                 content: "\203A"; /* right single angle quote */
             }
 
-/*  Custom CSS ========================================= */
 
-.mis-slider li a {
-    text-decoration: none;
-    color: #666;
-    display: block;
-}  
-.mis-slider li figcaption {
-    font-size: 1.5em;
-}
-.mis-slider li img {
-    max-width: 270px;
-    width: 100%;
-    border-radius: 180px;
-    border: none;
-}
-#slider2 .mis-slide {
-    padding: 0;
-}
-#slider2 .mis-slide img{
-    border-radius: 0;
-    max-width: 100%;
-    vertical-align: middle;
-}
 
 
 
