@@ -5,7 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge;chrome=1">
     <title>miSlider</title>
-    <script src="scripts/html5shiv.min.js"></script>
+    <!--<script src="scripts/html5shiv.min.js"></script>-->
+    <script src="scripts/html5shiv-printshiv.js"></script>
+    <!--<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>-->
     <!-- Load jQuery -->
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
     <script>window.jQuery || document.write('<script src="scripts/jquery/jquery-1.11.0.min.js"><\/script>')</script>
@@ -66,7 +68,7 @@
                         </a>
                     </li>
                     <li class="mis-slide">
-                        <a href="link" class="mis-container">
+                        <a href="#" class="mis-container">
                             <figure>
                                 <img src="images/garden03.jpg" alt="Hidden Pond">
                                 <figcaption>Hidden Pond</figcaption>
@@ -171,7 +173,7 @@
             <p>Please report bugs and suggestions for features to <a href="https://github.com/jbowyers/miSlider/issues">GitHub issues</a>.</p>
             <h2>Installation</h2>
             <ol>
-                <li>Download and extract miSlider</li>
+                <li>Download and extract miSlider - <a href="https://github.com/jbowyers/mislider/archive/master.zip">Download from GitHub</a></li>
                 <li>
                     Add the miSlider Plugin to your project - Copy the 'mislider.min.js'
                     file to the scripts folder for your website and the 'mislider.min.css'
@@ -198,7 +200,7 @@
 </code></pre>
                     <p>
                         Note: The classes are not required and will be automatically added by the plugin
-                        if absent. By default miSlider is designed to work with an ordered list as
+                        if absent. By default, miSlider is designed to work with an ordered list as
                         demonstrated above. If you want to use different elements be sure to change
                         the 'selectorSlider' and 'selectorSlide' options as defined in Configuration section below.
                     </p>

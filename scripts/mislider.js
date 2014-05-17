@@ -154,7 +154,7 @@
 			o.slider = o.stage.children(o.options.selectorSlider).first();  //  Only one slider per stage
 			o.slides = o.slider.children(o.options.selectorSlide);
 			o.slidesLengthOrig = o.slides.length;
-			o.animatedElements = o.animatedElements.add(o.slider);
+			o.animatedElements = o.animatedElements.add(o.slider).add(o.slides);
 
 		    //  Initiate current index
 			if (String(o.options.slideStart) === 'beg') {
@@ -453,7 +453,6 @@
 
 			//  Update current slide
 			o.slideCurrent = o.slides.eq(o.indexCurrent);
-			o.animatedElements = o.animatedElements.add(o.slides);
 
 			//  Set the horizontal position, width and other CSS of the slider ---------------------------------
 

@@ -92,7 +92,7 @@ Please report bugs and suggestions for features to [GitHub issues](https://githu
 		</div>
 
 	Note: The classes are not required and will be automatically added by the plugin
-	if absent. By default miSlider is designed to work with an ordered list as 
+	if absent. By default, miSlider is designed to work with an ordered list as 
 	demonstrated above. If you want to use different elements be sure to change
 	the 'selectorSlider' and 'selectorSlide' options as defined in the Configuration
     section below.

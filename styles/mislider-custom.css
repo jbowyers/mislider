@@ -68,6 +68,7 @@ h1, #wrapper > figure > figcaption {
 main {
     width: 80%;
     margin: 2em auto;
+    /*display: block;*/
 }
 pre {
     overflow:auto;
