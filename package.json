@@ -1,0 +1,69 @@
+{
+  "name": "mislider",
+  "title": "miSlider",
+  "version": "0.1.0",
+  "description": "Multi-item Slider or miSlider is an open-source jQuery slider plugin specifically designed for displaying multiple images or slides of content. The slider can be configured to display one slide at a time, as as possible or anything in between.",
+  "main": "dist/mislider-core.js",
+  "author": "John Bowyer-Smyth",
+  "scripts": {
+    "build": "npm install && grunt",
+    "start": "grunt watch",
+    "test": "grunt"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jbowyers/mislider.git"
+  },
+  "keywords": [
+    "slider",
+    "jQuery",
+    "plugin",
+    "carousel",
+    "image",
+    "gallery",
+    "multiple",
+    "images"
+  ],
+  
+  "licenses": [
+    {
+      "type": "GPL-3.0+",
+      "url": "https://github.com/jbowyers/mislider/blob/master/licence.txt"
+    }
+  ],
+  "bugs": {
+    "url": "https://github.com/jbowyers/mislider/issues"
+  },
+  "directories":{
+      "demo": "./demo",
+      "dist": "./dist",
+      "doc": "./doc",
+      "lib": "./lib",
+      "src": "./src",
+      "test": "./test",
+      "deploy": {
+            "root": "./../",
+            "css": "./../css",
+            "js": "./../js"
+        }
+  },
+  "homepage": "http://www.mislider.com",
+  "devDependencies": {
+    "commitplease": "~1.7.0",
+    "grunt": "^0.4.5",
+    "grunt-bump": "~0.0.11",
+    "grunt-contrib-concat": "~0.4.0",
+    "grunt-contrib-connect": "~0.3.0",
+    "grunt-contrib-csslint": "~0.2.0",
+    "grunt-contrib-jshint": "~0.8.0",
+    "grunt-contrib-uglify": "~0.3.2",
+    "grunt-contrib-watch": "~0.5.3",
+    "grunt-htmlhint": "~0.4.1",
+    "grunt-includes": "~0.4.4",
+    "grunt-jscs-checker": "~0.4.1",
+    "grunt-jsonlint": "~1.0.4",
+    "grunt-markdown": "~0.6.1",
+    "load-grunt-tasks": "~0.3.0"
+    
+  }
+}
