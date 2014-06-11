@@ -1,0 +1,246 @@
+<h1 id="mislider-jquery-plugin">miSlider jQuery Plugin</h1>
+<p>Multi-item Slider or miSlider is an open-source jQuery 
+slider plugin specifically designed for displaying multiple 
+images or slides of content. The slider can be configured to 
+display one slide at a time, as many slides as possible 
+or anything in between.</p>
+<h2 id="highlights">Highlights</h2>
+<ul>
+<li>Easy to use</li>
+<li>Supports one or more slides on screen </li>
+<li>Slides can be single images or complex HTML</li>
+<li>Lightweight</li>
+<li>Only requires jQuery core</li>
+<li>Responsive - Can automatically calculate the number of 
+slides that fit on screen</li>
+<li>Easily customizable</li>
+<li>Callbacks for slider events</li>
+<li>Cross-Browser Support - Supports IE8+</li>
+<li>Supports More than 1 slider per page</li>
+</ul>
+<h2 id="full-list-of-options">Full list of Options</h2>
+<p>The following are setting that can be customized:</p>
+<ul>
+<li>Speed of the slide transition </li>
+<li>Slide pause time between transitions </li>
+<li>Number of slides to increment</li>
+<li>Height of the slider </li>
+<li>Number of slides visible on screen at one time </li>
+<li>Continuous motion - Slides loop continuously 
+in one direction </li>
+<li>Location of the current slide on screen - 
+left, center, right </li>
+<li>Slide to start on. </li>
+<li>Width of the current slide </li>
+<li>Scaling factor of the current slide - 
+Other slides are scaled down. </li>
+<li>Vertical offset of the slide center - 
+Useful when slide images are not in the 
+center of the slide</li>
+<li>Center slide contents vertically - 
+Centers oversized slides vertically</li>
+<li>Enable &amp; disable Navigation Dots</li>
+<li>Enable &amp; disable Arrow Buttons</li>
+<li>Arrow Buttons transparency </li>
+<li>Randomize the order of the slides </li>
+<li>Slides loaded callback function</li>
+<li>Slide transition before callback function </li>
+<li>Slide transition complete callback function</li>
+<li>CSS class name that will be 
+applied to the Stage element</li>
+<li>CSS class name that will be 
+applied to the Slider element</li>
+<li>CSS class name that will be 
+applied to each Slide element</li>
+<li>CSS class name that will be 
+applied to Arrow Buttons element</li>
+<li>CSS class name that will be 
+applied to the Navigation Dots element</li>
+<li>Selector used to select the Slider element</li>
+<li>Selector used to select each Slide element</li>
+<li>Use Modernizr to test feature support - 
+csstransforms</li>
+</ul>
+<h2 id="demos">Demos</h2>
+<p>Visit the miSlider website for demos - <a href="http://www.mislider.com">www.mislider.com</a></p>
+<h2 id="problems-with-setup-and-configuration">Problems with Setup and Configuration</h2>
+<p>For issues with installation and configuration visit <a href="http://stackoverflow.com/questions/tagged/mislider">Stack Overflow</a>.</p>
+<h2 id="bugs-and-feature-requests">Bugs and Feature Requests</h2>
+<p>Please report bugs and suggestions for features to <a href="https://github.com/jbowyers/miSlider/issues">GitHub issues</a>.</p>
+<h2 id="installation">Installation</h2>
+<ol>
+<li>Download and extract miSlider</li>
+<li>Add the miSlider Plugin to your project - Copy the &#39;mislider.min.js&#39; 
+file to the scripts folder for your website and the &#39;mislider.min.css&#39; 
+file to the css folder</li>
+<li><p>Create the slides markup - Open the HTML page in which you want to add the slider
+and add the HTML. You can use any tags you like as long as you have
+elements for each slide, contained within an element for the slider, contained within
+an element for the stage. Example:</p>
+<pre><code>  &lt;div class=&quot;mis-stage&quot;&gt;
+      &lt;ol class=&quot;mis-slider&quot;&gt;
+          &lt;li class=&quot;mis-slide&quot;&gt;
+              &lt;img src=&quot;images/garden01.jpg&quot; alt=&quot;Lillies&quot;&gt;
+          &lt;/li&gt;
+          &lt;li class=&quot;mis-slide&quot;&gt;
+              &lt;img src=&quot;images/garden02.jpg&quot; alt=&quot;Pond&quot;&gt;
+          &lt;/li&gt;
+      &lt;/ol&gt;
+  &lt;/div&gt;</code></pre>
+<p>Note: The classes are not required and will be automatically added by the plugin
+if absent. By default, miSlider is designed to work with an ordered list as 
+demonstrated above. If you want to use different elements be sure to change
+the &#39;selectorSlider&#39; and &#39;selectorSlide&#39; options as defined in the Configuration
+section below.</p>
+</li>
+<li><p>Reference jQuery - If jQuery is not present then add the following reference 
+to the head of the HTML page</p>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+</li>
+<li><p>Reference the miSlider Plugin - Add the following references after 
+the jQuery reference in the head of the HTML page</p>
+<pre><code>  &lt;link href=&quot;styles/mislider.min.css&quot; rel=&quot;stylesheet&quot; type=&quot;text/css&quot; /&gt;
+  &lt;link href=&quot;styles/mislider-custom.css&quot; rel=&quot;stylesheet&quot; type=&quot;text/css&quot; /&gt;
+  &lt;script src=&quot;scripts/mislider.min.js&quot; type=&quot;text/javascript&quot;&gt;&lt;/script&gt;
+  &lt;script type=&quot;text/javascript&quot;&gt;
+      jQuery(function ($) {
+          var slider = $(&#39;.mis-stage&#39;).miSlider();
+      });
+  &lt;/script&gt;</code></pre>
+<p>Note: Make sure the jQuery selector (&#39;.mis-stage&#39;) correctly selects the 
+stage element defined in your HTML</p>
+</li>
+<li>You&#39;re good to go</li>
+</ol>
+<h2 id="configuration">Configuration</h2>
+<p>To change the default behaviour of the slider you can configure the slider 
+by adding the following optional setting:</p>
+<pre><code>    &lt;script type=&quot;text/javascript&quot;&gt;
+        jQuery(function ($) {
+            var slider = $(&#39;.mis-stage&#39;).miSlider({
+                //  The speed of the slide transition  
+                //  in milliseconds. Options: positive integer.
+                speed: 700,
+                //  slide pause time between transitions  
+                //  in milliseconds. Options: false, positive integer. 
+                //  false = Autoplay off.
+                pause: 4000,
+                //  The number of slides to increment with  
+                //  Autoplay and Nav Buttons. 
+                //  Options: positive or negative integer. 
+                //  Positive integer = Slide left. 
+                //  Negative integer = Slide right.
+                increment: 1,
+                //  The height of the stage in px. 
+                //  Options: false or positive integer. 
+                //  false = height is calculated using 
+                //  maximum slide heights.
+                stageHeight: false,
+                //  Number of slides visible at one time. 
+                //  Options: false or positive integer. 
+                //  false = Fit as many as possible.
+                slidesOnStage: 1,
+                //  Continuous motion - Boolean. 
+                //  true = slides loop in one direction if possible.
+                slidesContinuous: true,
+                //  The location of the current slide on the stage. 
+                //  Options: &#39;left&#39;, &#39;right&#39;, &#39;center&#39;.
+                slidePosition: &#39;left&#39;,
+                //  The slide to start on. 
+                //  Options: &#39;beg&#39;, &#39;mid&#39;, &#39;end&#39; 
+                //  or slide number starting at 1 - &#39;1&#39;,&#39;2&#39;, etc.
+                slideStart: &#39;beg&#39;,
+                //  The width of the current slide in px. 
+                //  Options: false or positive integer. 
+                //  false = width is the maximum of 
+                //  the existing slide widths.
+                slideWidth: false,
+                //  The relative percentage scaling factor 
+                //  of the current slide
+                //  other slides are scaled down. 
+                //  Options: positive number 100 or higher. 
+                //  100 = No scaling.
+                slideScaling: 100,
+                //  The vertical offset of the slide center 
+                //  as a percentage of slide height. 
+                //  Options:  positive or negative number. 
+                //  Neg value = up. Pos value = down. 
+                //  0 = No offset.
+                offsetV: 0,
+                //  Center slide contents vertically
+                //  Boolean.
+                centerV: false,
+                //  Enable numbered list navigation
+                //  Boolean.
+                navList: true,
+                //  Enable prev and next button navigation
+                //  Boolean.
+                navButtons: true,
+                //  Always show prev and next button navigation 
+                //  except when transitioning - Boolean.
+                navButtonsShow: false,
+                //  Opacity of the prev and next 
+                //  button navigation when not transitioning. 
+                //  Options: Number between 0 and 1. 
+                //  0 (transparent) - 1 (opaque).
+                navButtonsOpacity: 0.5,
+                //  Randomize the order of the slides
+                //  Boolean.
+                randomize: false,
+                //  The slides loaded call back function
+                //  called when slides have loaded.
+                slidesLoaded: false,
+                //  The slide transition before 
+                //  call back function - called before 
+                //  the slide transition.
+                beforeTrans: false,
+                //  The slide transition complete 
+                //  call back function - called at the end 
+                //  of a slide transition.
+                afterTrans: false,
+                //  The CSS class that will be applied 
+                //  to the stage element.
+                classStage: &#39;mis-stage&#39;,
+                //  The CSS class that will be 
+                //  applied to the slider element.
+                classSlider: &#39;mis-slider&#39;,
+                //  The CSS class that will be 
+                //  applied to each slide element.
+                classSlide: &#39;mis-slide&#39;,
+                //  The CSS class that will be 
+                //  applied to the parent of the 
+                //  prev and next button navigation elements.
+                classNavButtons: &#39;mis-nav-buttons&#39;,
+                //  The CSS class that will be 
+                //  applied to the parent of the 
+                //  numbered list navigation elements
+                classNavList: &#39;mis-nav-list&#39;,
+                //  The selector used to select 
+                //  the slider element
+                //  Descendant of the stage
+                selectorSlider: &#39;ol&#39;,
+                //  The selector used to select 
+                //  each slide element
+                //  Descendant of the slider
+                selectorSlide: &#39;li&#39;,
+                //  Use Modernizr to test 
+                //  feature support - csstransforms
+                modernizrBool: false,
+            });
+        });
+    &lt;/script&gt;</code></pre>
+<h2 id="styling">Styling</h2>
+<p>To style the slider, create a new stylesheet, name it &#39;mislider-custom.css&#39; 
+and save it to your CSS folder (Note: Add a reference to the stylesheet 
+as illustrated above if you haven&#39;t already). Add your custom CSS to this file. By default miSlider
+uses the following class names:</p>
+<ul>
+<li>&#39;mis-stage&#39;  - The containing element that defines the visible area</li>
+<li>&#39;mis-slider&#39; - The slide container element used to move the slides</li>
+<li>&#39;mis-slide&#39; - Each slide element</li>
+<li>&#39;mis-container&#39; - A container element inserted automatically
+by the plugin, wraped around the contents of each slide</li>
+<li>&#39;mis-nav-buttons&#39; - The previous and next arrows on each side 
+of the current image</li>
+<li>&#39;mis-nav-list&#39; - the little dots used to navigate to different slides</li>
+</ul>

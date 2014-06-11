@@ -80,16 +80,16 @@ Please report bugs and suggestions for features to [GitHub issues](https://githu
 	elements for each slide, contained within an element for the slider, contained within
 	an element for the stage. Example:
 
-		<div class="mis-stage">
-            <ol class="mis-slider">
-                <li class="mis-slide">
-                    <img src="images/garden01.jpg" alt="Lillies">
-                </li>
-				<li class="mis-slide">
-                    <img src="images/garden02.jpg" alt="Pond">
-                </li>
-			</ol>
-		</div>
+			<div class="mis-stage">
+				<ol class="mis-slider">
+					<li class="mis-slide">
+						<img src="images/garden01.jpg" alt="Lillies">
+					</li>
+					<li class="mis-slide">
+						<img src="images/garden02.jpg" alt="Pond">
+					</li>
+				</ol>
+			</div>
 
 	Note: The classes are not required and will be automatically added by the plugin
 	if absent. By default, miSlider is designed to work with an ordered list as 
@@ -104,14 +104,14 @@ Please report bugs and suggestions for features to [GitHub issues](https://githu
 1.	Reference the miSlider Plugin - Add the following references after 
 	the jQuery reference in the head of the HTML page
 
-		<link href="styles/mislider.min.css" rel="stylesheet" type="text/css" />
-		<link href="styles/mislider-custom.css" rel="stylesheet" type="text/css" />
-		<script src="scripts/mislider.min.js" type="text/javascript"></script>
-		<script type="text/javascript">
-			jQuery(function ($) {
-				var slider = $('.mis-stage').miSlider();
-			});
-		</script>
+			<link href="styles/mislider.min.css" rel="stylesheet" type="text/css" />
+			<link href="styles/mislider-custom.css" rel="stylesheet" type="text/css" />
+			<script src="scripts/mislider.min.js" type="text/javascript"></script>
+			<script type="text/javascript">
+				jQuery(function ($) {
+					var slider = $('.mis-stage').miSlider();
+				});
+			</script>
 
 	Note: Make sure the jQuery selector ('.mis-stage') correctly selects the 
 	stage element defined in your HTML
