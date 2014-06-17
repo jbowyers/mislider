@@ -3,7 +3,7 @@
 	"title": "miSlider",
 	"version": "0.1.4",
 	"description": "Multi-item Slider or miSlider is an open-source jQuery slider plugin specifically designed for displaying multiple images or slides of content. The slider can be configured to display one slide at a time, as as possible or anything in between.",
-	"main": "dist/mislider-core.js",
+	"main": ["dist/js/mislider.js", "dist/js/mislider.min.js", "dist/css/mislider-cameo.css", "dist/css/mislider.css"],
 	"ignore": [
 		"bower_components",
 		"demo",

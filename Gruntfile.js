@@ -2,7 +2,20 @@ module.exports = function (grunt) {
 
 	// Project configuration ---------------------------------------------------
 	grunt.initConfig({
-		pkg: grunt.file.readJSON('package.json'),
+		pkg: grunt.file.readJSON( 'package.json' ),
+		bower: {
+			install: {
+				options: {
+					targetDir: '<%= pkg.directories.lib %>',
+					layout: 'byType',
+					install: true,
+					verbose: false,
+					cleanTargetDir: false,
+					cleanBowerDir: false,
+					bowerOptions: {}
+				}
+			}
+		},
 		uglify: {
 			options: {
 				banner: '/*! <%= pkg.title %> <%= grunt.template.today("yyyy-mm-dd") %> verison <%= pkg.version %> */\n' + '/* <%= pkg.repository.url %> */\n'
@@ -20,6 +33,12 @@ module.exports = function (grunt) {
 						cwd: 'src/js/',
 						src: ['**'],
 						dest: 'dist/js/'
+					},
+					{
+						expand: true,
+						cwd: 'src/css/',
+						src: ['**'],
+						dest: 'dist/css/'
 					}
 				]
 			},
@@ -62,11 +81,11 @@ module.exports = function (grunt) {
 			}
 		},
 		concat: {
-			css: {
+			dist: {
 				files: [
 					// cameo skin
 					{
-						src: ['src/css/mislider-core.css', 'src/css/mislider-skin-cameo.css'],
+						src: ['src/css/mislider.css', 'src/css/mislider-skin-cameo.css'],
 						dest: 'dist/css/mislider-cameo.css'
 					}
 				]
@@ -104,7 +123,7 @@ module.exports = function (grunt) {
 		watch: {
 			js: {
 				files: 'src/js/*.js',
-				tasks: ['jshint', 'jscs'],
+				tasks: [ 'jshint', 'jscs' ],
 				options: {
 					debounceDelay: 250
 				}
@@ -117,7 +136,7 @@ module.exports = function (grunt) {
 				}
 			},
 			html: {
-				files: ['src/**/*.html', '*.html', 'demo/**/*.html'],
+				files: [ 'src/**/*.html', '*.html', 'demo/**/*.html' ],
 				tasks: ['htmlhint'],
 				options: {
 					debounceDelay: 250
@@ -142,7 +161,7 @@ module.exports = function (grunt) {
 				}
 			},
 			files: {
-				src: ['src/**/*.js']
+				src: [ 'src/**/*.js' ]
 			}
 		},
 		jscs: {
@@ -152,7 +171,7 @@ module.exports = function (grunt) {
 					report: 'full'
 				},
 				files: {
-					src: ['src/js/mislider.js' ]
+					src: [ 'src/js/mislider.js' ]
 				}
 			}
 		},
@@ -198,13 +217,13 @@ module.exports = function (grunt) {
 				options: {
 					import: 2
 				},
-				src: ['src/**/*.css']
+				src: [ 'src/**/*.css' ]
 			},
 			lax: {
       			options: {
       				import: false
       			},
-      			src: ['src/**/*.css']
+      			src: [ 'src/**/*.css' ]
 			}
 		},
 		htmlhint: {
@@ -212,26 +231,39 @@ module.exports = function (grunt) {
 				'tag-pair': true
 			},
 			src: {
-				src: ['src/**/*.html']
+				src: [ 'src/**/*.html' ]
 			},
 			root: {
-				src: ['*.html']
+				src: [ '*.html' ]
 			}
 		},
 		jsonlint: {
 			root: {
-				src: ['*.json']
+				src: [ '*.json' ]
 			}
 		},
 		bump: {
 			options: {
-				files: ['package.json', 'bower.json'],
-				commit: false,
-				createTag: false,
+				files: [ 'package.json', 'bower.json' ],
+				updateConfigs: [ 'pkg' ],
+				commit: true,
+				commitMessage: 'Release v%VERSION%',
+				commitFiles: [ 'package.json', 'bower.json' ],
+				createTag: true,
+				tagName: 'v%VERSION%',
+				tagMessage: 'Release Version %VERSION%',
 				push: false
 			}
-		}
+		},
+		shell: {
+			watch: {
+				command: 'start grunt watch',
+				options: {
+					async: true
+				}
+			}
 
+		}
 	});
 	// set the grunt force option
 	grunt.option("force", true);
@@ -240,10 +272,11 @@ module.exports = function (grunt) {
 	require( 'load-grunt-tasks' )( grunt );
 
 	// Default task(s)
-	grunt.registerTask( 'lint', [ 'jshint', 'csslint:lax', 'htmlhint', 'jsonlint', 'jscs' ] );
-	grunt.registerTask( 'build', [ 'uglify', 'copy:dist', 'concat:css' ] );
+	grunt.registerTask( 'setup', ['bower'] );
+	grunt.registerTask( 'lint', ['jshint', 'csslint:lax', 'htmlhint', 'jsonlint', 'jscs'] );
+	grunt.registerTask( 'build', [ 'uglify', 'copy:dist', 'concat:dist' ] );
 	grunt.registerTask( 'demo', [ 'build', 'markdown:readme', 'includes:demo', 'copy:demo' ] );
 	grunt.registerTask( 'deploy', [ 'build', 'copy:deploy' ] );
-	grunt.registerTask( 'default', [ 'lint' ]);
+	grunt.registerTask( 'default', [ 'shell:watch', 'lint' ]);
 
 };
