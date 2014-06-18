@@ -12,17 +12,34 @@ module.exports = function (grunt) {
 					verbose: false,
 					cleanTargetDir: false,
 					cleanBowerDir: false,
-					bowerOptions: {}
+					bowerOptions: {
+						forceLatest: false,    // Force latest version on conflict
+						production: true,     // Do not install project devDependencies
+					}
 				}
 			}
 		},
 		uglify: {
-			options: {
-				banner: '/*! <%= pkg.title %> <%= grunt.template.today("yyyy-mm-dd") %> verison <%= pkg.version %> */\n' + '/* <%= pkg.repository.url %> */\n'
+			src: {
+				options: {
+					banner: '/*! <%= pkg.title %> <%= grunt.template.today("yyyy-mm-dd") %> verison <%= pkg.version %> */\n' + '/* <%= pkg.repository.url %> */\n',
+					sourceMap: true
+				},
+				files: {
+					'dist/js/mislider.min.js': ['src/js/mislider.js']
+				}
 			},
-			dist: {
-				src: 'src/js/mislider.js',
-				dest: 'dist/js/mislider.min.js'
+			lib: {
+				options: {
+
+				},
+				files: [{
+					expand: true,
+					cwd: 'lib',
+					src: '*/*.js',
+					dest: 'dist/js',
+					ext: '.min.js'
+				}]
 			}
 		},
 		copy: {
@@ -31,6 +48,12 @@ module.exports = function (grunt) {
 					{
 						expand: true,
 						cwd: 'src/js/',
+						src: ['**'],
+						dest: 'dist/js/'
+					},
+					{
+						expand: true,
+						cwd: 'lib/*/*.js',
 						src: ['**'],
 						dest: 'dist/js/'
 					},
@@ -113,7 +136,7 @@ module.exports = function (grunt) {
 				},
 				files: [
 					{
-						cwd: 'src/',
+						cwd: 'demo/',
 						src: 'demo.html', // Source files
 						dest: 'demo/index.html', // Destination file
 					}
@@ -252,7 +275,7 @@ module.exports = function (grunt) {
 				createTag: true,
 				tagName: 'v%VERSION%',
 				tagMessage: 'Release Version %VERSION%',
-				push: false
+				push: true
 			}
 		},
 		shell: {
