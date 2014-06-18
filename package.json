@@ -1,7 +1,7 @@
 {
   "name": "mislider",
   "title": "miSlider",
-  "version": "0.1.5",
+  "version": "0.1.6",
   "description": "Multi-item Slider or miSlider is an open-source jQuery slider plugin specifically designed for displaying multiple images or slides of content. The slider can be configured to display one slide at a time, as as possible or anything in between.",
   "main": "dist/mislider.js",
   "author": "John Bowyer-Smyth",
@@ -67,7 +67,7 @@
     "grunt-contrib-csslint": "~0.2.0",
 	"grunt-contrib-jscs": "~0.1.8",
     "grunt-contrib-jshint": "~0.8.0",
-    "grunt-contrib-uglify": "~0.3.2",
+    "grunt-contrib-uglify": "~0.5.0",
     "grunt-contrib-watch": "~0.5.3",
     "grunt-htmlhint": "~0.4.0",
     "grunt-includes": "~0.4.4",
