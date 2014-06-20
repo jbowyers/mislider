@@ -194,7 +194,7 @@ module.exports = function (grunt) {
 					report: 'full'
 				},
 				files: {
-					src: [ 'src/js/mislider.js' ]
+					src: [ 'src/js' ]
 				}
 			}
 		},
@@ -275,7 +275,8 @@ module.exports = function (grunt) {
 				createTag: true,
 				tagName: 'v%VERSION%',
 				tagMessage: 'Release Version %VERSION%',
-				push: true
+				push: true,
+				pushTo: 'origin'
 			}
 		},
 		shell: {

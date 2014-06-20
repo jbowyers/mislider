@@ -18,6 +18,17 @@ or anything in between.
 *   Cross-Browser Support - Supports IE8+
 *   Supports More than 1 slider per page
 
+##Download Source
+[Download miSlider zip](https://github.com/jbowyers/mislider/archive/master.zip)
+or visit [miSlider on GitHub](https://github.com/jbowyers/mislider)
+
+##Quickstart
+The fastest way to start using miSlider is to download miSlider, 
+copy the demo folder to your project and adapt the html and css 
+as needed. 
+
+You can also install mislider in your project using Bower package manager.
+
 ##Full list of Options
 The following are setting that can be customized:
 
