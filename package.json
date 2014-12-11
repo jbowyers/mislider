@@ -40,7 +40,8 @@
       "dist": {
 		"root": "./dist",
 		"js":"./dist/js",
-		"css": "./dist/css"
+		"css": "./dist/css",
+        "images": ""
       },
       "doc": "./doc",
       "lib": "./lib",
@@ -48,13 +49,16 @@
       "src": {
 		"root": "./src",
 		"js":"./src/js",
-		"css": "./src/css"
+		"css": "./src/css",
+        "lib": "./lib",
+        "images": ""
       },
       "test": "./test",
       "deploy": {
-            "root": "./../",
-            "css": "./../css",
-            "js": "./../js"
+          "root": "./../",
+          "css": "./../css",
+          "js": "./../js",
+          "images": ""
         }
   },
   "homepage": "http://www.mislider.com",
@@ -65,6 +69,7 @@
     "grunt-contrib-concat": "~0.4.0",
 	"grunt-contrib-copy": "~0.5.0",
     "grunt-contrib-csslint": "~0.2.0",
+    "grunt-contrib-cssmin": "~0.10.0",
 	"grunt-contrib-jscs": "~0.1.8",
     "grunt-contrib-jshint": "~0.8.0",
     "grunt-contrib-uglify": "~0.5.0",
@@ -73,6 +78,7 @@
     "grunt-includes": "~0.4.4",
     "grunt-jsonlint": "~1.0.4",
     "grunt-markdown": "~0.6.1",
+    "grunt-modernizr": "^0.5.2",
 	"grunt-shell-spawn": "~0.3.0",
     "load-grunt-tasks": "~0.3.0"
   }

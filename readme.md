@@ -69,8 +69,6 @@ The following are setting that can be customized:
     applied to the Navigation Dots element
 *   Selector used to select the Slider element
 *   Selector used to select each Slide element
-*   Use Modernizr to test feature support - 
-    csstransforms
 
 ##Demos
 Visit the miSlider website for demos - [www.mislider.com](http://www.mislider.com)
@@ -239,10 +237,7 @@ by adding the following optional setting:
 					//  The selector used to select 
                     //  each slide element
                     //  Descendant of the slider
-                    selectorSlide: 'li',
-					//  Use Modernizr to test 
-                    //  feature support - csstransforms
-                    modernizrBool: false,
+                    selectorSlide: 'li'
 				});
 			});
 		</script>

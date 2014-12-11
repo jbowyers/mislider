@@ -1,25 +1,32 @@
-﻿// miSlider
-//
-// Copyright 2014 John Bowyer-Smyth
-//
-// This file is part of miSlider.
-//
-// miSlider is free software: you can redistribute it and/or modify
-// it under the terms of the GNU General Public License as published by
-// the Free Software Foundation, either version 3 of the License, or
-// (at your option) any later version.
-//
-// miSlider is distributed in the hope that it will be useful,
-// but WITHOUT ANY WARRANTY; without even the implied warranty of
-// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-// GNU General Public License for more details.
-//
-// You should have received a copy of the GNU General Public License
-// along with this program.  If not, see http://www.gnu.org/licenses/
+﻿/**
+ * miSlider
+ * Version: 0.0.x
+ * URL: private
+ * Description: A multi-item slider for displayinh one or more itmes per slide
+ * Requires: jQuery
+ * Optional: Modernizr
+ * Author: JBS
+ * Copyright: 2014 John Bowyer-Smyth
+ * License: This file is part of miSlider.
+ * miSlider is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * miSlider is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see http://www.gnu.org/licenses/
+ */
 
 ;(function( $, window, document, Math, undefined ) {
 
-var miSlider = function( stageEl, options ) {
+"use strict";
+
+var MiSlider = function( stageEl, options ) {
 
 	// Clone miSlider object
 	var o = this;
@@ -94,9 +101,7 @@ var miSlider = function( stageEl, options ) {
 		// The selector used to select the slider element - Descendant of the stage
 		selectorSlider: "ol",
 		// The selector used to select each slide element - Descendant of the slider
-		selectorSlide: "li",
-		// Use Modernizr to test feature support - csstransforms
-		modernizrBool: false
+		selectorSlide: "li"
 	};
 
 	// Define objects and vars =================================================
@@ -225,10 +230,10 @@ var miSlider = function( stageEl, options ) {
 			o.indexCurrent = Math.ceil( o.slidesLengthOrig / 2 ) - 1;
 		} else if ( String( o.options.slideStart ) === "end" ) {
 			o.indexCurrent = o.slidesLengthOrig - 1;
-		} else if ($.isNumeric(o.options.slideStart) &&
-			parseInt(o.options.slideStart) <= o.slidesLengthOrig &&
-			parseInt(o.options.slideStart) > 0) {
-				o.indexCurrent = parseInt( o.options.slideStart ) - 1;
+		} else if ($.isNumeric( o.options.slideStart ) &&
+			parseInt( o.options.slideStart, 10 ) <= o.slidesLengthOrig &&
+			parseInt( o.options.slideStart, 10 ) > 0) {
+				o.indexCurrent = parseInt( o.options.slideStart, 10 ) - 1;
 		} else {
 			o.indexCurrent = 0;
 		}
@@ -248,12 +253,12 @@ var miSlider = function( stageEl, options ) {
 
 		// Normalize static options
 		if ( o.options.speed && $.isNumeric( o.options.speed ) ) {
-			o.speed = Math.abs( parseInt( o.options.speed ) );
+			o.speed = Math.abs( parseInt( o.options.speed, 10 ) );
 		}
 		if ( o.options.pause === false ) { // Note: 0 must return true
 			o.pause = false;
 		} else if ( $.isNumeric( o.options.pause ) ) {
-			o.pause = Math.abs( parseInt( o.options.pause ) );
+			o.pause = Math.abs( parseInt( o.options.pause, 10 ) );
 		}
 		if ( $.isNumeric( o.options.offsetV ) ) {
 			o.offsetV = Number( o.options.offsetV );
@@ -269,14 +274,14 @@ var miSlider = function( stageEl, options ) {
 			o.slideScaling = Number( o.options.slideScaling );
 		}
 		// if CSS transforms are not supported
-		if ( !o.supportTransform( o.options.modernizrBool, stageEl ) ) {
+		if ( !supportTransform( stageEl ) ) {
 			o.slideScaling = 100;
 		}
 		o.optionsInit.slideScaling = o.slideScaling;
 
 		// Initiate the calculated increment
-		if ( $.isNumeric( o.options.increment ) && parseInt( o.options.increment ) !== 0 ) {
-			o.increment = parseInt( o.options.increment );
+		if ( $.isNumeric( o.options.increment ) && parseInt( o.options.increment, 10 ) !== 0 ) {
+			o.increment = parseInt( o.options.increment, 10 );
 			o.optionsInit.increment = o.increment;
 		}
 
@@ -373,9 +378,7 @@ var miSlider = function( stageEl, options ) {
 			"resize": function() {
 				o.autoplayOff();
 				clearTimeout( o.resizeTimer );
-				o.resizeTimer = setTimeout(function() {
-					o.resetSlider();
-				}, 500 );
+				o.resizeTimer = setTimeout(o.resetSlider, 500 );
 			}
 		});
 
@@ -423,15 +426,15 @@ var miSlider = function( stageEl, options ) {
 		});
 
 		// Apply presets if they exist
-		if ( $.isNumeric( o.options.slideWidth ) && parseInt( o.options.slideWidth ) > 0 ) {
-			o.slideWidthCurrent = parseInt( o.options.slideWidth );
+		if ( $.isNumeric( o.options.slideWidth ) && parseInt( o.options.slideWidth, 10 ) > 0 ) {
+			o.slideWidthCurrent = parseInt( o.options.slideWidth, 10 );
 		}
-		if ( $.isNumeric( o.options.stageHeight ) && parseInt( o.options.stageHeight ) > 0 ) {
-			o.stageHeight = parseInt( o.options.stageHeight );
+		if ( $.isNumeric( o.options.stageHeight ) && parseInt( o.options.stageHeight, 10 ) > 0 ) {
+			o.stageHeight = parseInt( o.options.stageHeight, 10 );
 		}
 
 		// Use modulus hack to ensure current index is within range
-		o.indexCurrent = o.normalizeIndex( o.indexCurrent );
+		o.indexCurrent = normalizeIndex( o.indexCurrent );
 
 		// Set the stage -------------------------------------------------------
 
@@ -454,11 +457,11 @@ var miSlider = function( stageEl, options ) {
 
 		// Calculate the number of slides visible on the stage
 		o.slidesOnStage = slidesMaxNum;  // Fit as many as possible
-		if ($.isNumeric(o.options.slidesOnStage) &&
-			parseInt(o.options.slidesOnStage) >= 1 &&
-			parseInt(o.options.slidesOnStage) <= slidesMaxNum) {
+		if ($.isNumeric( o.options.slidesOnStage ) &&
+			parseInt( o.options.slidesOnStage, 10 ) >= 1 &&
+			parseInt( o.options.slidesOnStage, 10 ) <= slidesMaxNum) {
 				// Use existing options value
-				o.slidesOnStage = parseInt( o.options.slidesOnStage );
+				o.slidesOnStage = parseInt( o.options.slidesOnStage, 10 );
 		}
 		if ( o.options.slidePosition === "center" ) {
 			// need odd number for centered layout
@@ -549,7 +552,7 @@ var miSlider = function( stageEl, options ) {
 		// Set CSS of slider
 		o.slider
 			.css({
-				"left": o.leftOffset( o.indexCurrent ),
+				"left": leftOffsetter( o.indexCurrent ),
 				"width": o.sliderWidth
 			})
 		;
@@ -591,12 +594,12 @@ var miSlider = function( stageEl, options ) {
 				}
 			} else {
 				// Use modulus hack to ensure adjusted index is within range
-				indexToAdjusted = o.normalizeIndex( indexTo );
+				indexToAdjusted = normalizeIndex( indexTo );
 			}
 
 			// Get the normalized difference between indexes
-			indexDiff = o.normalizeIndex( indexToAdjusted ) -
-				o.normalizeIndex( indexCurrentAdjusted );
+			indexDiff = normalizeIndex( indexToAdjusted ) -
+                normalizeIndex( indexCurrentAdjusted );
 
 			// If adjusted indexTo != adjusted current index - do move ---------
 			if ( indexDiff ) {
@@ -666,7 +669,7 @@ var miSlider = function( stageEl, options ) {
 							.removeClass( o.classCurrent );
 
 					// Jump to Clone
-					o.slider.css( "left", o.leftOffset( indexCurrentAdjusted ) );
+					o.slider.css( "left", leftOffsetter( indexCurrentAdjusted ) );
 
 					// Reset original
 					if ( o.slideScaling !== 100 ) {
@@ -812,7 +815,7 @@ var miSlider = function( stageEl, options ) {
 
 		// Move to new slide ---------------------------------------------------
 		o.slider.animate({
-			"left": o.leftOffset( indexTo )
+			"left": leftOffsetter( indexTo )
 		}, {
 			duration: o.speed,
 			queue: false,
@@ -851,7 +854,7 @@ var miSlider = function( stageEl, options ) {
 		if ( o.pause !== false ) { // autoplay is enabled
 
 			// Reset timer
-			o.timer = clearInterval( o.timer );
+			clearInterval( o.timer );
 			if ( !o.stage.find( ":hover" ).length ) {   // slider is not in hover state
 				o.timer = setInterval(function() {
 					// if not transitioning do transition
@@ -866,7 +869,7 @@ var miSlider = function( stageEl, options ) {
 
 	// Autoplay off ------------------------------------------------------------
 	o.autoplayOff = function() {
-		o.timer = clearInterval( o.timer );
+		clearInterval( o.timer );
 		return this;
 	};
 
@@ -1023,21 +1026,6 @@ var miSlider = function( stageEl, options ) {
 		return this;
 	};
 
-	// Slider left offset calculator ------------------------------------------
-	o.leftOffset = function( index ) {
-
-		var indexOffset = o.slideWidth * index * -1,
-				leftOffset = indexOffset; // Slide position = Left
-
-		if ( o.options.slidePosition === "center" ) {
-			leftOffset = indexOffset + ( Math.floor( o.slidesOnStage / 2 ) * o.slideWidth );
-		} else if (o.options.slidePosition === "right") {
-			leftOffset = ( indexOffset + ( ( o.slidesOnStage - 1) * o.slideWidth ) );
-		}
-
-		return leftOffset;
-	};
-
 	// Reset Slider -----------------------------------------------------------
 	o.resetSlider = function() {
 		if ( o.animatedElements.is( ":animated" ) ) {
@@ -1080,12 +1068,6 @@ var miSlider = function( stageEl, options ) {
 		return this;
 	};
 
-	// Use modulus hack to make sure index is within range ----------------------
-	o.normalizeIndex = function( index ) {
-		index = ( ( index % o.slidesLengthOrig ) + o.slidesLengthOrig ) % o.slidesLengthOrig;
-		return index;
-	};
-
 	// Setup slides function ----------------------------------------------------
 	o.slideSetup = function() {
 		o.slides.each(function( i ) {
@@ -1100,7 +1082,7 @@ var miSlider = function( stageEl, options ) {
 
 			// Get vertical slide offset if enabled
 			if ( o.options.centerV ) {
-				o.getMarginTop( slide, "slideMarginTopCurrent" );
+                getMarginTop( slide, "slideMarginTopCurrent" );
 			}
 
 			// Set non-current slides
@@ -1122,7 +1104,7 @@ var miSlider = function( stageEl, options ) {
 			// Vertically center slide if enabled
 			if ( o.options.centerV ) {
 				slide.children().first().css({
-					"marginTop": o.getMarginTop( slide, "slideMarginTop" )
+					"marginTop": getMarginTop( slide, "slideMarginTop" )
 				});
 			}
 
@@ -1147,16 +1129,31 @@ var miSlider = function( stageEl, options ) {
 				// Vertically center slide if enabled
 				if ( o.options.centerV ) {
 					slide.children().first().css({
-						"marginTop": o.getMarginTop( slide, "slideMarginTopCurrent" )
+						"marginTop": getMarginTop( slide, "slideMarginTopCurrent" )
 					});
 				}
 			}
 		});
 	};
 
+    // Slider left offset calculator ------------------------------------------
+    function leftOffsetter( index ) {
+
+        var indexOffset = o.slideWidth * index * -1,
+            leftOffset = indexOffset; // Slide position = Left
+
+        if ( o.options.slidePosition === "center" ) {
+            leftOffset = indexOffset + ( Math.floor( o.slidesOnStage / 2 ) * o.slideWidth );
+        } else if (o.options.slidePosition === "right") {
+            leftOffset = ( indexOffset + ( ( o.slidesOnStage - 1) * o.slideWidth ) );
+        }
+
+        return leftOffset;
+    }
+
 	// Get offset for centering slide contents vertically within stage
 	// Must be called after contents (images) have loaded to get correct height
-	o.getMarginTop = function( slide, dataKey ) {
+	function getMarginTop( slide, dataKey ) {
 
 		// Get height of slide container
 		var height = slide.children().first().outerHeight(),
@@ -1171,13 +1168,18 @@ var miSlider = function( stageEl, options ) {
 		slide.data( dataKey, slideMarginTop );
 
 		return slideMarginTop;
-	};
+	}
 
+    // Use modulus hack to make sure index is within range ----------------------
+    function normalizeIndex( index ) {
+        index = ( ( index % o.slidesLengthOrig ) + o.slidesLengthOrig ) % o.slidesLengthOrig;
+        return index;
+    }
 	// Test transform feature support
-	o.supportTransform = function( modernizrBool, element ) {
+	function supportTransform( element ) {
 		var test = false;
-		// User Modernizr if it exists
-		if ( modernizrBool && Modernizr ) {
+		// Use Modernizr if it exists
+		if ( typeof Modernizr !== 'undefined' ) {
 			if ( Modernizr.csstransforms ) {
 				test = true;
 			}
@@ -1190,7 +1192,7 @@ var miSlider = function( stageEl, options ) {
 			}
 		}
 		return test;
-	};
+	}
 
 	// initialize ----------------------------------------------------------------
 	o.init( stageEl, options );
@@ -1205,7 +1207,7 @@ $.fn.miSlider = function( options ) {
 	return this.each(function() {
 		var stage = $( this );
 		if ( !stage.data( "miSlider" ) ) {
-			stage.data( "miSlider", new miSlider( this, options ) );
+			stage.data( "miSlider", new MiSlider( this, options ) );
 		}
 	});
 };
