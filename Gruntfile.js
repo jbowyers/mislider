@@ -22,11 +22,11 @@ module.exports = function (grunt) {
 		uglify: {
 			src: {
 				options: {
-					banner: '/*! <%= pkg.title %> <%= grunt.template.today("yyyy-mm-dd") %> verison <%= pkg.version %> */\n' + '/* <%= pkg.repository.url %> */\n',
+					banner: '/*! <%= pkg.title %> <%= grunt.template.today("yyyy-mm-dd") %> verison: <%= pkg.version %> */\n' + '/* <%= pkg.repository.url %> */\n',
 					sourceMap: true
 				},
 				files: {
-					'dist/js/mislider.min.js': ['src/js/mislider.js']
+					'<%= pkg.directories.dist.js %>/<%= pkg.fileNames.js %>.min.js': ['<%= pkg.directories.src.js %>/<%= pkg.fileNames.js %>.js']
 				}
 			},
 			lib: {
@@ -35,9 +35,9 @@ module.exports = function (grunt) {
 				},
 				files: [{
 					expand: true,
-					cwd: 'lib',
+					cwd: '<%= pkg.directories.lib %>',
 					src: '*/*.js',
-					dest: 'dist/js',
+					dest: '<%= pkg.directories.dist.js %>',
 					ext: '.min.js'
 				}]
 			}
@@ -47,21 +47,21 @@ module.exports = function (grunt) {
 				files: [
 					{
 						expand: true,
-						cwd: 'src/js/',
+						cwd: '<%= pkg.directories.src.js %>',
 						src: ['**'],
-						dest: 'dist/js/'
+						dest: '<%= pkg.directories.dist.js %>'
 					},
 					{
 						expand: true,
-						cwd: 'lib/*/*.js',
+						cwd: '<%= pkg.directories.lib %>/*/*.js',
 						src: ['**'],
-						dest: 'dist/js/'
+						dest: '<%= pkg.directories.dist.js %>'
 					},
 					{
 						expand: true,
-						cwd: 'src/css/',
+						cwd: '<%= pkg.directories.src.css %>',
 						src: ['**'],
-						dest: 'dist/css/'
+						dest: '<%= pkg.directories.dist.css %>'
 					}
 				]
 			},
@@ -69,13 +69,13 @@ module.exports = function (grunt) {
 				files: [
 					{
 						expand: true,
-						cwd: 'dist/js/',
+						cwd: '<%= pkg.directories.dist.js %>',
 						src: ['**'],
 						dest: '<%= pkg.directories.deploy.js %>'
 					},
 					{
 						expand: true,
-						cwd: 'dist/css/',
+						cwd: '<%= pkg.directories.dist.css %>',
 						src: ['**'],
 						dest: '<%= pkg.directories.deploy.css %>'
 					}
@@ -85,20 +85,26 @@ module.exports = function (grunt) {
 				files: [
 					{
 						expand: true,
-						cwd: 'dist/js/',
+						cwd: '<%= pkg.directories.dist.js %>',
 						src: ['**'],
-						dest: 'demo/js/'
+						dest: '<%= pkg.directories.demo.js %>'
 					},
 					{
 						expand: true,
-						cwd: 'dist/css/',
+						cwd: '<%= pkg.directories.dist.css %>',
 						src: ['**'],
-						dest: 'demo/css/'
+						dest: '<%= pkg.directories.demo.css %>'
 					},
+                    {
+                        expand: true,
+                        cwd: '<%= pkg.directories.templates %>',
+                        src: ['README.html'],
+                        dest: './'
+                    },
 					{
 						expand: true,
 						src: ['LICENCE.txt'],
-						dest: 'demo/'
+						dest: '<%= pkg.directories.demo.root %>'
 					}
 				]
 			}
@@ -108,8 +114,8 @@ module.exports = function (grunt) {
 				files: [
 					// cameo skin
 					{
-						src: ['src/css/mislider.css', 'src/css/mislider-skin-cameo.css'],
-						dest: 'dist/css/mislider-cameo.css'
+						src: ['<%= pkg.directories.src.css %>/<%= pkg.fileNames.css %>.css', '<%= pkg.directories.src.css %>/mislider-skin-cameo.css'],
+						dest: '<%= pkg.directories.dist.css %>/mislider-cameo.css'
 					}
 				]
 			}
@@ -120,46 +126,46 @@ module.exports = function (grunt) {
 					{
 				  		expand: true,
 				  		src: 'README.md',
-				  		dest: 'templates/',
+				  		dest: '<%= pkg.directories.templates %>',
 				  		ext: '.html'
 					}
 				],
 				options: {
-					template: 'templates/md-blank.html'
+					template: '<%= pkg.directories.templates %>/md-blank.html'
 				}
 			}
 		},
 		includes: {
 			demo: {
 				options: {
-					includePath: 'templates/'
+					includePath: '<%= pkg.directories.templates %>'
 				},
 				files: [
 					{
-						cwd: 'demo/',
+						cwd: '<%= pkg.directories.demo.root %>',
 						src: 'demo.html', // Source files
-						dest: 'demo/index.html', // Destination file
+						dest: '<%= pkg.directories.demo.root %>/index.html' // Destination file
 					}
 				]
 			}
 		},
 		watch: {
 			js: {
-				files: 'src/js/*.js',
+				files: '<%= pkg.directories.src.js %>/*.js',
 				tasks: [ 'jshint', 'jscs' ],
 				options: {
 					debounceDelay: 250
 				}
 			},
 			css: {
-				files: 'src/css/*.css',
+				files: '<%= pkg.directories.src.css %>/*.css',
 				tasks: ['csslint'],
 				options: {
 					debounceDelay: 250
 				}
 			},
 			html: {
-				files: [ 'src/**/*.html', '*.html', 'demo/**/*.html' ],
+				files: [ '<%= pkg.directories.src.root %>/**/*.html', '*.html', '<%= pkg.directories.demo.root %>/**/*.html' ],
 				tasks: ['htmlhint'],
 				options: {
 					debounceDelay: 250
@@ -184,7 +190,7 @@ module.exports = function (grunt) {
 				}
 			},
 			files: {
-				src: [ 'src/**/*.js' ]
+				src: [ '<%= pkg.directories.src.root %>/**/*.js' ]
 			}
 		},
 		jscs: {
@@ -194,7 +200,7 @@ module.exports = function (grunt) {
 					report: 'full'
 				},
 				files: {
-					src: [ 'src/js' ]
+					src: [ '<%= pkg.directories.src.js %>' ]
 				}
 			}
 		},
@@ -240,13 +246,13 @@ module.exports = function (grunt) {
 				options: {
 					import: 2
 				},
-				src: [ 'src/**/*.css' ]
+				src: [ '<%= pkg.directories.src.root %>/**/*.css' ]
 			},
 			lax: {
       			options: {
       				import: false
       			},
-      			src: [ 'src/**/*.css' ]
+      			src: [ '<%= pkg.directories.src.root %>/**/*.css' ]
 			}
 		},
 		htmlhint: {
@@ -254,7 +260,7 @@ module.exports = function (grunt) {
 				'tag-pair': true
 			},
 			src: {
-				src: [ 'src/**/*.html' ]
+				src: [ '<%= pkg.directories.src.root %>/**/*.html' ]
 			},
 			root: {
 				src: [ '*.html' ]
@@ -271,7 +277,7 @@ module.exports = function (grunt) {
                 "devFile": "remote",
 
                 // [REQUIRED] Path to save out the built file.
-                "outputFile": "<%= pkg.directories.src.lib %>/modernizr/modernizr-custom.js",
+                "outputFile": "<%= pkg.directories.lib %>/modernizr/modernizr-custom.js",
 
                 // Based on default settings on http://modernizr.com/download/
                 "extra": {
@@ -318,20 +324,31 @@ module.exports = function (grunt) {
                 "customTests": []
             }
         },
-		bump: {
-			options: {
-				files: [ 'package.json', 'bower.json' ],
-				updateConfigs: [ 'pkg' ],
-				commit: true,
-				commitMessage: 'Release v%VERSION%',
-				commitFiles: [ 'package.json', 'bower.json' ],
-				createTag: true,
-				tagName: 'v%VERSION%',
-				tagMessage: 'Release Version %VERSION%',
-				push: true,
-				pushTo: 'origin'
-			}
-		},
+        bump: {
+            options: {
+                files: [
+                    'package.json',
+                    'bower.json',
+                    '<%= pkg.directories.src.css %>/<%= pkg.fileNames.css %>.css',
+                    '<%= pkg.directories.src.js %>/<%= pkg.fileNames.js %>.js',
+                    '<%= pkg.directories.dist.css %>/<%= pkg.fileNames.css %>.css',
+                    '<%= pkg.directories.dist.js %>/<%= pkg.fileNames.js %>.js',
+                    '<%= pkg.directories.dist.css %>/<%= pkg.fileNames.css %>.min.css',
+                    '<%= pkg.directories.dist.js %>/<%= pkg.fileNames.js %>.min.js',
+                    'README.md'],
+                commitFiles: [
+                    'package.json',
+                    'bower.json',
+                    '<%= pkg.directories.src.css %>/<%= pkg.fileNames.css %>.css',
+                    '<%= pkg.directories.src.js %>/<%= pkg.fileNames.js %>.js',
+                    '<%= pkg.directories.dist.css %>/<%= pkg.fileNames.css %>.css',
+                    '<%= pkg.directories.dist.js %>/<%= pkg.fileNames.js %>.js',
+                    '<%= pkg.directories.dist.css %>/<%= pkg.fileNames.css %>.min.css',
+                    '<%= pkg.directories.dist.js %>/<%= pkg.fileNames.js %>.min.js',
+                    'README.md'],
+                push: false
+            }
+        },
 		shell: {
 			watch: {
 				command: 'start grunt watch',

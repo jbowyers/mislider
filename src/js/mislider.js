@@ -1,12 +1,12 @@
 ﻿/**
  * miSlider
- * Version: 0.0.x
+ * Version: 0.1.7
  * URL: private
- * Description: A multi-item slider for displayinh one or more itmes per slide
+ * Description: A multi-item slider for displaying one or more items per slide
  * Requires: jQuery
  * Optional: Modernizr
- * Author: JBS
- * Copyright: 2014 John Bowyer-Smyth
+ * Author: jbowyers
+ * Copyright: 2014-2015 jbowyers
  * License: This file is part of miSlider.
  * miSlider is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -36,7 +36,6 @@ var MiSlider = function( stageEl, options ) {
 
 		// The speed of the slide transition in milliseconds. Options: positive integer.
 		speed: 700,
-
 		// slide pause time between transitions in milliseconds.
 		// Options: false, positive integer. false = Autoplay off.
 		pause: 4000,

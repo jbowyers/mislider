@@ -36,7 +36,12 @@
     "url": "https://github.com/jbowyers/mislider/issues"
   },
   "directories": {
-      "demo": "./demo",
+      "demo": {
+        "root": "./demo",
+        "js":"./demo/js",
+        "css": "./demo/css",
+        "images": "./demo/images"
+      },
       "dist": {
 		"root": "./dist",
 		"js":"./dist/js",
@@ -50,8 +55,7 @@
 		"root": "./src",
 		"js":"./src/js",
 		"css": "./src/css",
-        "lib": "./lib",
-        "images": ""
+        "images": "./src/images"
       },
       "test": "./test",
       "deploy": {
@@ -60,6 +64,10 @@
           "js": "./../js",
           "images": ""
         }
+  },
+  "fileNames": {
+    "js": "mislider",
+    "css": "mislider"
   },
   "homepage": "http://www.mislider.com",
   "devDependencies": {

@@ -1,13 +1,11 @@
-<h1>miSlider jQuery Plugin</h1>
-
+<h1 id="mislider-jquery-plugin">miSlider jQuery Plugin</h1>
 <p>Multi-item Slider or miSlider is an open-source jQuery 
 slider plugin specifically designed for displaying multiple 
 images or slides of content. The slider can be configured to 
 display one slide at a time, as many slides as possible 
 or anything in between.</p>
-
-<h2>Highlights</h2>
-
+<p><strong>Version: 0.1.7</strong><br><strong>Contributors</strong>: jbowyers<br><strong>Donate link</strong>:<br><strong>Tags</strong>: slider, jQuery, plugin, carousel, image, gallery, multiple, images<br><strong>Requires</strong>: jQuery<br><strong>License</strong>: GPLv3<br><strong>License URI</strong>: <a href="http://www.gnu.org/licenses/gpl-3.0.html">http://www.gnu.org/licenses/gpl-3.0.html</a></p>
+<h2 id="highlights">Highlights</h2>
 <ul>
 <li>Easy to use</li>
 <li>Supports one or more slides on screen </li>
@@ -21,24 +19,16 @@ slides that fit on screen</li>
 <li>Cross-Browser Support - Supports IE8+</li>
 <li>Supports More than 1 slider per page</li>
 </ul>
-
-<h2>Download Source</h2>
-
+<h2 id="download-source">Download Source</h2>
 <p><a href="https://github.com/jbowyers/mislider/archive/master.zip">Download miSlider zip</a>
 or visit <a href="https://github.com/jbowyers/mislider">miSlider on GitHub</a></p>
-
-<h2>Quickstart</h2>
-
+<h2 id="quickstart">Quickstart</h2>
 <p>The fastest way to start using miSlider is to download miSlider, 
 copy the demo folder to your project and adapt the html and css 
 as needed. </p>
-
 <p>You can also install mislider in your project using Bower package manager.</p>
-
-<h2>Full list of Options</h2>
-
+<h2 id="full-list-of-options">Full list of Options</h2>
 <p>The following are setting that can be customized:</p>
-
 <ul>
 <li>Speed of the slide transition </li>
 <li>Slide pause time between transitions </li>
@@ -78,79 +68,63 @@ applied to the Navigation Dots element</li>
 <li>Selector used to select the Slider element</li>
 <li>Selector used to select each Slide element</li>
 </ul>
-
-<h2>Demos</h2>
-
+<h2 id="demos">Demos</h2>
 <p>Visit the miSlider website for demos - <a href="http://www.mislider.com">www.mislider.com</a></p>
-
-<h2>Problems with Setup and Configuration</h2>
-
+<h2 id="problems-with-setup-and-configuration">Problems with Setup and Configuration</h2>
 <p>For issues with installation and configuration visit <a href="http://stackoverflow.com/questions/tagged/mislider">Stack Overflow</a>.</p>
-
-<h2>Bugs and Feature Requests</h2>
-
+<h2 id="bugs-and-feature-requests">Bugs and Feature Requests</h2>
 <p>Please report bugs and suggestions for features to <a href="https://github.com/jbowyers/miSlider/issues">GitHub issues</a>.</p>
-
-<h2>Installation</h2>
-
+<h2 id="installation">Installation</h2>
 <ol>
 <li>Download and extract miSlider</li>
-<li>Add the miSlider Plugin to your project - Copy the 'mislider.min.js' 
-file to the scripts folder for your website and the 'mislider.min.css' 
+<li>Add the miSlider Plugin to your project - Copy the &#39;mislider.min.js&#39; 
+file to the scripts folder for your website and the &#39;mislider.min.css&#39; 
 file to the css folder</li>
 <li><p>Create the slides markup - Open the HTML page in which you want to add the slider
 and add the HTML. You can use any tags you like as long as you have
 elements for each slide, contained within an element for the slider, contained within
 an element for the stage. Example:</p>
-
-<pre><code>    &lt;div class="mis-stage"&gt;
-        &lt;ol class="mis-slider"&gt;
-            &lt;li class="mis-slide"&gt;
-                &lt;img src="images/garden01.jpg" alt="Lillies"&gt;
-            &lt;/li&gt;
-            &lt;li class="mis-slide"&gt;
-                &lt;img src="images/garden02.jpg" alt="Pond"&gt;
-            &lt;/li&gt;
-        &lt;/ol&gt;
-    &lt;/div&gt;
-</code></pre>
-
+<pre><code>  &lt;div class=&quot;mis-stage&quot;&gt;
+      &lt;ol class=&quot;mis-slider&quot;&gt;
+          &lt;li class=&quot;mis-slide&quot;&gt;
+              &lt;img src=&quot;images/garden01.jpg&quot; alt=&quot;Lillies&quot;&gt;
+          &lt;/li&gt;
+          &lt;li class=&quot;mis-slide&quot;&gt;
+              &lt;img src=&quot;images/garden02.jpg&quot; alt=&quot;Pond&quot;&gt;
+          &lt;/li&gt;
+      &lt;/ol&gt;
+  &lt;/div&gt;</code></pre>
 <p>Note: The classes are not required and will be automatically added by the plugin
 if absent. By default, miSlider is designed to work with an ordered list as 
 demonstrated above. If you want to use different elements be sure to change
-the 'selectorSlider' and 'selectorSlide' options as defined in the Configuration
-section below.</p></li>
+the &#39;selectorSlider&#39; and &#39;selectorSlide&#39; options as defined in the Configuration
+section below.</p>
+</li>
 <li><p>Reference jQuery - If jQuery is not present then add the following reference 
 to the head of the HTML page</p>
-
-<pre><code>&lt;script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"&gt;&lt;/script&gt;
-</code></pre></li>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+</li>
 <li><p>Reference the miSlider Plugin - Add the following references after 
 the jQuery reference in the head of the HTML page</p>
-
-<pre><code>    &lt;link href="styles/mislider.min.css" rel="stylesheet" type="text/css" /&gt;
-    &lt;link href="styles/mislider-custom.css" rel="stylesheet" type="text/css" /&gt;
-    &lt;script src="scripts/mislider.min.js" type="text/javascript"&gt;&lt;/script&gt;
-    &lt;script type="text/javascript"&gt;
-        jQuery(function ($) {
-            var slider = $('.mis-stage').miSlider();
-        });
-    &lt;/script&gt;
-</code></pre>
-
-<p>Note: Make sure the jQuery selector ('.mis-stage') correctly selects the 
-stage element defined in your HTML</p></li>
-<li>You're good to go</li>
+<pre><code>  &lt;link href=&quot;styles/mislider.min.css&quot; rel=&quot;stylesheet&quot; type=&quot;text/css&quot; /&gt;
+  &lt;link href=&quot;styles/mislider-custom.css&quot; rel=&quot;stylesheet&quot; type=&quot;text/css&quot; /&gt;
+  &lt;script src=&quot;scripts/mislider.min.js&quot; type=&quot;text/javascript&quot;&gt;&lt;/script&gt;
+  &lt;script type=&quot;text/javascript&quot;&gt;
+      jQuery(function ($) {
+          var slider = $(&#39;.mis-stage&#39;).miSlider();
+      });
+  &lt;/script&gt;</code></pre>
+<p>Note: Make sure the jQuery selector (&#39;.mis-stage&#39;) correctly selects the 
+stage element defined in your HTML</p>
+</li>
+<li>You&#39;re good to go</li>
 </ol>
-
-<h2>Configuration</h2>
-
+<h2 id="configuration">Configuration</h2>
 <p>To change the default behaviour of the slider you can configure the slider 
 by adding the following optional setting:</p>
-
-<pre><code>    &lt;script type="text/javascript"&gt;
+<pre><code>    &lt;script type=&quot;text/javascript&quot;&gt;
         jQuery(function ($) {
-            var slider = $('.mis-stage').miSlider({
+            var slider = $(&#39;.mis-stage&#39;).miSlider({
                 //  The speed of the slide transition  
                 //  in milliseconds. Options: positive integer.
                 speed: 700,
@@ -177,12 +151,12 @@ by adding the following optional setting:</p>
                 //  true = slides loop in one direction if possible.
                 slidesContinuous: true,
                 //  The location of the current slide on the stage. 
-                //  Options: 'left', 'right', 'center'.
-                slidePosition: 'left',
+                //  Options: &#39;left&#39;, &#39;right&#39;, &#39;center&#39;.
+                slidePosition: &#39;left&#39;,
                 //  The slide to start on. 
-                //  Options: 'beg', 'mid', 'end' 
-                //  or slide number starting at 1 - '1','2', etc.
-                slideStart: 'beg',
+                //  Options: &#39;beg&#39;, &#39;mid&#39;, &#39;end&#39; 
+                //  or slide number starting at 1 - &#39;1&#39;,&#39;2&#39;, etc.
+                slideStart: &#39;beg&#39;,
                 //  The width of the current slide in px. 
                 //  Options: false or positive integer. 
                 //  false = width is the maximum of 
@@ -233,48 +207,44 @@ by adding the following optional setting:</p>
                 afterTrans: false,
                 //  The CSS class that will be applied 
                 //  to the stage element.
-                classStage: 'mis-stage',
+                classStage: &#39;mis-stage&#39;,
                 //  The CSS class that will be 
                 //  applied to the slider element.
-                classSlider: 'mis-slider',
+                classSlider: &#39;mis-slider&#39;,
                 //  The CSS class that will be 
                 //  applied to each slide element.
-                classSlide: 'mis-slide',
+                classSlide: &#39;mis-slide&#39;,
                 //  The CSS class that will be 
                 //  applied to the parent of the 
                 //  prev and next button navigation elements.
-                classNavButtons: 'mis-nav-buttons',
+                classNavButtons: &#39;mis-nav-buttons&#39;,
                 //  The CSS class that will be 
                 //  applied to the parent of the 
                 //  numbered list navigation elements
-                classNavList: 'mis-nav-list',
+                classNavList: &#39;mis-nav-list&#39;,
                 //  The selector used to select 
                 //  the slider element
                 //  Descendant of the stage
-                selectorSlider: 'ol',
+                selectorSlider: &#39;ol&#39;,
                 //  The selector used to select 
                 //  each slide element
                 //  Descendant of the slider
-                selectorSlide: 'li'
+                selectorSlide: &#39;li&#39;
             });
         });
-    &lt;/script&gt;
-</code></pre>
-
-<h2>Styling</h2>
-
-<p>To style the slider, create a new stylesheet, name it 'mislider-custom.css' 
+    &lt;/script&gt;</code></pre>
+<h2 id="styling">Styling</h2>
+<p>To style the slider, create a new stylesheet, name it &#39;mislider-custom.css&#39; 
 and save it to your CSS folder (Note: Add a reference to the stylesheet 
-as illustrated above if you haven't already). Add your custom CSS to this file. By default miSlider
+as illustrated above if you haven&#39;t already). Add your custom CSS to this file. By default miSlider
 uses the following class names:</p>
-
 <ul>
-<li>'mis-stage'  - The containing element that defines the visible area</li>
-<li>'mis-slider' - The slide container element used to move the slides</li>
-<li>'mis-slide' - Each slide element</li>
-<li>'mis-container' - A container element inserted automatically
+<li>&#39;mis-stage&#39;  - The containing element that defines the visible area</li>
+<li>&#39;mis-slider&#39; - The slide container element used to move the slides</li>
+<li>&#39;mis-slide&#39; - Each slide element</li>
+<li>&#39;mis-container&#39; - A container element inserted automatically
 by the plugin, wraped around the contents of each slide</li>
-<li>'mis-nav-buttons' - The previous and next arrows on each side 
+<li>&#39;mis-nav-buttons&#39; - The previous and next arrows on each side 
 of the current image</li>
-<li>'mis-nav-list' - the little dots used to navigate to different slides</li>
+<li>&#39;mis-nav-list&#39; - the little dots used to navigate to different slides</li>
 </ul>
