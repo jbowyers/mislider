@@ -22,7 +22,7 @@ module.exports = function (grunt) {
 		uglify: {
 			src: {
 				options: {
-					banner: '/*! <%= pkg.title %> <%= grunt.template.today("yyyy-mm-dd") %> verison: <%= pkg.version %> */\n' + '/* <%= pkg.repository.url %> */\n',
+					banner: '/*! <%= pkg.title %> <%= grunt.template.today("yyyy-mm-dd") %> version: <%= pkg.version %> */\n' + '/* <%= pkg.repository.url %> */\n',
 					sourceMap: true
 				},
 				files: {
@@ -335,7 +335,14 @@ module.exports = function (grunt) {
                     '<%= pkg.directories.dist.js %>/<%= pkg.fileNames.js %>.js',
                     '<%= pkg.directories.dist.css %>/<%= pkg.fileNames.css %>.min.css',
                     '<%= pkg.directories.dist.js %>/<%= pkg.fileNames.js %>.min.js',
-                    'README.md'],
+                    '<%= pkg.directories.demo.css %>/<%= pkg.fileNames.css %>.css',
+                    '<%= pkg.directories.demo.js %>/<%= pkg.fileNames.js %>.js',
+                    '<%= pkg.directories.demo.css %>/<%= pkg.fileNames.css %>.min.css',
+                    '<%= pkg.directories.demo.js %>/<%= pkg.fileNames.js %>.min.js',
+                    '<%= pkg.directories.demo.root %>/index.html',
+                    '<%= pkg.directories.templates %>/README.html',
+                    'README.md',
+                    'README.html'],
                 commitFiles: [
                     'package.json',
                     'bower.json',
@@ -345,7 +352,14 @@ module.exports = function (grunt) {
                     '<%= pkg.directories.dist.js %>/<%= pkg.fileNames.js %>.js',
                     '<%= pkg.directories.dist.css %>/<%= pkg.fileNames.css %>.min.css',
                     '<%= pkg.directories.dist.js %>/<%= pkg.fileNames.js %>.min.js',
-                    'README.md'],
+                    '<%= pkg.directories.demo.css %>/<%= pkg.fileNames.css %>.css',
+                    '<%= pkg.directories.demo.js %>/<%= pkg.fileNames.js %>.js',
+                    '<%= pkg.directories.demo.css %>/<%= pkg.fileNames.css %>.min.css',
+                    '<%= pkg.directories.demo.js %>/<%= pkg.fileNames.js %>.min.js',
+                    '<%= pkg.directories.demo.root %>/index.html',
+                    '<%= pkg.directories.templates %>/readme.html',
+                    'readme.md',
+                    'readme.html'],
                 push: false
             }
         },
