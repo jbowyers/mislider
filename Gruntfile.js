@@ -6,7 +6,7 @@ module.exports = function (grunt) {
 		bower: {
 			install: {
 				options: {
-					targetDir: '<%= pkg.directories.lib %>',
+					targetDir: '<%= pkg.directories.src.lib %>',
 					layout: 'byType',
 					install: true,
 					verbose: false,
@@ -37,7 +37,7 @@ module.exports = function (grunt) {
 					expand: true,
 					cwd: '<%= pkg.directories.lib %>',
 					src: '*/*.js',
-					dest: '<%= pkg.directories.dist.js %>',
+					dest: '<%= pkg.directories.dist.lib %>',
 					ext: '.min.js'
 				}]
 			}
@@ -53,9 +53,9 @@ module.exports = function (grunt) {
 					},
 					{
 						expand: true,
-						cwd: '<%= pkg.directories.lib %>/*/*.js',
+						cwd: '<%= pkg.directories.lib %>',
 						src: ['**'],
-						dest: '<%= pkg.directories.dist.js %>'
+						dest: '<%= pkg.directories.dist.lib %>'
 					},
 					{
 						expand: true,
@@ -89,6 +89,12 @@ module.exports = function (grunt) {
 						src: ['**'],
 						dest: '<%= pkg.directories.demo.js %>'
 					},
+                    {
+                        expand: true,
+                        cwd: '<%= pkg.directories.dist.lib %>',
+                        src: ['**'],
+                        dest: '<%= pkg.directories.demo.lib %>'
+                    },
 					{
 						expand: true,
 						cwd: '<%= pkg.directories.dist.css %>',

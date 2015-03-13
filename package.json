@@ -40,11 +40,13 @@
         "root": "./demo",
         "js":"./demo/js",
         "css": "./demo/css",
+        "lib":"./demo/lib",
         "images": "./demo/images"
       },
       "dist": {
 		"root": "./dist",
 		"js":"./dist/js",
+        "lib":"./dist/lib",
 		"css": "./dist/css",
         "images": ""
       },
@@ -54,6 +56,7 @@
       "src": {
 		"root": "./src",
 		"js":"./src/js",
+        "lib":"./src/lib",
 		"css": "./src/css",
         "images": "./src/images"
       },
