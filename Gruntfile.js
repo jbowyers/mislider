@@ -346,9 +346,9 @@ module.exports = function (grunt) {
                     '<%= pkg.directories.demo.css %>/<%= pkg.fileNames.css %>.min.css',
                     '<%= pkg.directories.demo.js %>/<%= pkg.fileNames.js %>.min.js',
                     '<%= pkg.directories.demo.root %>/index.html',
-                    '<%= pkg.directories.templates %>/README.html',
-                    'README.md',
-                    'README.html'],
+                    '<%= pkg.directories.templates %>/readme.html',
+                    'readme.md',
+                    'readme.html'],
                 commitFiles: [
                     'package.json',
                     'bower.json',
