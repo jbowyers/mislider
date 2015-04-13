@@ -104,7 +104,7 @@ module.exports = function (grunt) {
                     {
                         expand: true,
                         cwd: '<%= pkg.directories.templates %>',
-                        src: ['README.html'],
+                        src: ['readme.html'],
                         dest: './'
                     },
 					{
@@ -131,7 +131,7 @@ module.exports = function (grunt) {
 				files: [
 					{
 				  		expand: true,
-				  		src: 'README.md',
+				  		src: 'readme.md',
 				  		dest: '<%= pkg.directories.templates %>',
 				  		ext: '.html'
 					}
