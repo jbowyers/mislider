@@ -148,7 +148,7 @@ module.exports = function (grunt) {
 				},
 				files: [
 					{
-						cwd: '<%= pkg.directories.demo.root %>',
+						cwd: '<%= pkg.directories.src.root %>',
 						src: 'demo.html', // Source files
 						dest: '<%= pkg.directories.demo.root %>/index.html' // Destination file
 					}
