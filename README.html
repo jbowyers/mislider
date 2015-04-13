@@ -84,7 +84,8 @@ file to the css folder</li>
 and add the HTML. You can use any tags you like as long as you have
 elements for each slide, contained within an element for the slider, contained within
 an element for the stage. Example:</p>
-<pre><code>  &lt;div class=&quot;mis-stage&quot;&gt;
+<pre><code>
+  &lt;div class=&quot;mis-stage&quot;&gt;
       &lt;ol class=&quot;mis-slider&quot;&gt;
           &lt;li class=&quot;mis-slide&quot;&gt;
               &lt;img src=&quot;images/garden01.jpg&quot; alt=&quot;Lillies&quot;&gt;
@@ -102,14 +103,16 @@ section below.</p>
 </li>
 <li><p>Reference jQuery - If jQuery is not present then add the following reference 
 to the head of the HTML page</p>
-  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+<pre><code>
+  &lt;script src=&quot;//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js&quot;&gt;&lt;/script&gt;</code></pre>
 </li>
 <li><p>Reference the miSlider Plugin - Add the following references after 
 the jQuery reference in the head of the HTML page</p>
-<pre><code>  &lt;link href=&quot;styles/mislider.min.css&quot; rel=&quot;stylesheet&quot; type=&quot;text/css&quot; /&gt;
-  &lt;link href=&quot;styles/mislider-custom.css&quot; rel=&quot;stylesheet&quot; type=&quot;text/css&quot; /&gt;
-  &lt;script src=&quot;scripts/mislider.min.js&quot; type=&quot;text/javascript&quot;&gt;&lt;/script&gt;
-  &lt;script type=&quot;text/javascript&quot;&gt;
+<pre><code>
+  &lt;link href=&quot;styles/mislider.min.css&quot; rel=&quot;stylesheet&quot;&gt;
+  &lt;link href=&quot;styles/mislider-custom.css&quot; rel=&quot;stylesheet&quot;&gt;
+  &lt;script src=&quot;scripts/mislider.min.js&quot;&gt;&lt;/script&gt;
+  &lt;script&gt;
       jQuery(function ($) {
           var slider = $(&#39;.mis-stage&#39;).miSlider();
       });
@@ -122,7 +125,8 @@ stage element defined in your HTML</p>
 <h2 id="configuration">Configuration</h2>
 <p>To change the default behaviour of the slider you can configure the slider 
 by adding the following optional setting:</p>
-<pre><code>    &lt;script type=&quot;text/javascript&quot;&gt;
+<pre><code>
+    &lt;script&gt;
         jQuery(function ($) {
             var slider = $(&#39;.mis-stage&#39;).miSlider({
                 //  The speed of the slide transition  

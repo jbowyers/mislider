@@ -17,7 +17,7 @@
             display: block;
         }  
         .mis-slider li figcaption {
-            font-size: 1.5em;
+            font-size: 1.125em;
         }
         .mis-slider li img {
             /*  Make max-width of image a little less than width of slide

@@ -46,11 +46,12 @@ h1, #wrapper > figure > figcaption {
     margin: 2em auto;
     /*display: block;*/
 }
-pre {
-    overflow:auto;
-    width: 100%;
+div.main pre {
+    font-size: 1.1em;
+    overflow: auto;
+    max-height: 500px;
     background-color: #fff;
-    padding: 1em;
+    padding: 0 1em 1em;
 }
 @media screen and (min-width: 1200px) {
     .main {
