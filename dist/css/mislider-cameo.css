@@ -1,5 +1,6 @@
 
 /*  miSlider Core Styles ========================================== */
+/* Version: 0.1.9 */
 
 /*  Resets */
 .mis-stage, .mis-slider, .mis-slide, .mis-container, .mis-container * {
@@ -63,16 +64,17 @@
 		}
         .mis-nav-list li a {
 			display: block;
-			width: 14px;
-			height: 14px;
+			width: 11px;
+			height: 11px;
 			text-indent: 100%; /* Replace text */
             overflow: hidden;
             white-space: nowrap;
 			border: 1px solid #eee;
 			border-radius: 7px; /* Make items round */
 			opacity: .3;
-            -webkit-box-shadow: inset 0 0 4px #333;
-			box-shadow: inset 0 0 4px 2px #333;
+            -webkit-box-shadow: inset 0 0 2px #333;
+            box-shadow: inset 0 0 2px 2px #333;
+            margin: 0 3px;
 		}
 			.mis-nav-list li.mis-current a, .mis-nav-list li a:hover {
 				background: #333;
@@ -135,7 +137,7 @@
             display: block;
         }  
         .mis-slider li figcaption {
-            font-size: 1.5em;
+            font-size: 1.125em;
         }
         .mis-slider li img {
             /*  Make max-width of image a little less than width of slide
