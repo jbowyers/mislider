@@ -149,7 +149,7 @@ module.exports = function (grunt) {
 				files: [
 					{
 						cwd: '<%= pkg.directories.src.root %>',
-						src: 'demo.html', // Source files
+						src: '<%= pkg.fileNames.demo %>.html', // Source files
 						dest: '<%= pkg.directories.demo.root %>/index.html' // Destination file
 					}
 				]
@@ -377,7 +377,26 @@ module.exports = function (grunt) {
 				}
 			}
 
-		}
+		},
+        browserSync: {
+            dev: {
+                bsFiles: {
+                    src: [
+                        '<%= pkg.directories.src.root %>/*.html',
+                        '<%= pkg.directories.src.js %>/*.js',
+                        '<%= pkg.directories.src.css %>/*.css',
+                        '<%= pkg.directories.lib %>/**/*',
+                        '<%= pkg.directories.src.images %>/*'
+                    ]
+                },
+                options: {
+                    server: {
+                        baseDir: '<%= pkg.directories.src.root %>',
+                        index: '<%= pkg.fileNames.demo %>.html'
+                    }
+                }
+            }
+        }
 	});
 	// set the grunt force option
 	grunt.option("force", true);

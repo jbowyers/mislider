@@ -24,64 +24,65 @@
     "multiple",
     "images"
   ],
-  
   "licenses": [
     {
       "type": "GPL-3.0+",
       "url": "https://github.com/jbowyers/mislider/blob/master/licence.txt",
-	  "files": "LICENCE.txt"
+      "files": "LICENCE.txt"
     }
   ],
   "bugs": {
     "url": "https://github.com/jbowyers/mislider/issues"
   },
   "directories": {
-      "demo": {
-        "root": "./demo",
-        "js":"./demo/js",
-        "css": "./demo/css",
-        "lib":"./demo/lib",
-        "images": "./demo/images"
-      },
-      "dist": {
-		"root": "./dist",
-		"js":"./dist/js",
-        "lib":"./dist/lib",
-		"css": "./dist/css",
-        "images": ""
-      },
-      "doc": "./doc",
-      "lib": "./lib",
-	  "templates": "./templates",
-      "src": {
-		"root": "./src",
-		"js":"./src/js",
-        "lib":"./src/lib",
-		"css": "./src/css",
-        "images": "./src/images"
-      },
-      "test": "./test",
-      "deploy": {
-          "root": "./../",
-          "css": "./../css",
-          "js": "./../js",
-          "images": ""
-        }
+    "demo": {
+      "root": "./demo",
+      "js": "./demo/js",
+      "css": "./demo/css",
+      "lib": "./demo/lib",
+      "images": "./demo/images"
+    },
+    "dist": {
+      "root": "./dist",
+      "js": "./dist/js",
+      "lib": "./dist/lib",
+      "css": "./dist/css",
+      "images": ""
+    },
+    "doc": "./doc",
+    "lib": "./lib",
+    "templates": "./templates",
+    "src": {
+      "root": "./src",
+      "js": "./src/js",
+      "lib": "./src/lib",
+      "css": "./src/css",
+      "images": "./src/images"
+    },
+    "test": "./test",
+    "deploy": {
+      "root": "./../",
+      "css": "./../css",
+      "js": "./../js",
+      "images": ""
+    }
   },
   "fileNames": {
     "js": "mislider",
-    "css": "mislider"
+    "css": "mislider",
+    "demo": "demo"
   },
   "homepage": "http://www.mislider.com",
   "devDependencies": {
     "grunt": "^0.4.5",
-	"grunt-bower-installer": "~0.3.6",
+    "grunt-bower-installer": "~0.3.6",
+    "grunt-browser-sync": "^2.1.2",
     "grunt-bump": "~0.0.14",
     "grunt-contrib-concat": "~0.4.0",
-	"grunt-contrib-copy": "~0.5.0",
+    "grunt-contrib-copy": "~0.5.0",
     "grunt-contrib-csslint": "~0.2.0",
     "grunt-contrib-cssmin": "~0.10.0",
-	"grunt-contrib-jscs": "~0.1.8",
+    "grunt-contrib-jscs": "~0.1.8",
     "grunt-contrib-jshint": "~0.8.0",
     "grunt-contrib-uglify": "~0.5.0",
     "grunt-contrib-watch": "~0.5.3",
@@ -90,7 +91,7 @@
     "grunt-jsonlint": "~1.0.4",
     "grunt-markdown": "~0.6.1",
     "grunt-modernizr": "^0.5.2",
-	"grunt-shell-spawn": "~0.3.0",
+    "grunt-shell-spawn": "~0.3.0",
     "load-grunt-tasks": "~0.3.0"
   }
 }
