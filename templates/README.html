@@ -84,7 +84,7 @@ file to the css folder</li>
 and add the HTML. You can use any tags you like as long as you have
 elements for each slide, contained within an element for the slider, contained within
 an element for the stage. Example:</p>
-<pre><code>
+<pre><code class="lang-html">
   &lt;div class=&quot;mis-stage&quot;&gt;
       &lt;ol class=&quot;mis-slider&quot;&gt;
           &lt;li class=&quot;mis-slide&quot;&gt;
@@ -103,12 +103,12 @@ section below.</p>
 </li>
 <li><p>Reference jQuery - If jQuery is not present then add the following reference 
 to the head of the HTML page</p>
-<pre><code>
+<pre><code class="lang-html">
   &lt;script src=&quot;//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js&quot;&gt;&lt;/script&gt;</code></pre>
 </li>
 <li><p>Reference the miSlider Plugin - Add the following references after 
 the jQuery reference in the head of the HTML page</p>
-<pre><code>
+<pre><code class="lang-javascript">
   &lt;link href=&quot;styles/mislider.min.css&quot; rel=&quot;stylesheet&quot;&gt;
   &lt;link href=&quot;styles/mislider-custom.css&quot; rel=&quot;stylesheet&quot;&gt;
   &lt;script src=&quot;scripts/mislider.min.js&quot;&gt;&lt;/script&gt;
@@ -125,7 +125,7 @@ stage element defined in your HTML</p>
 <h2 id="configuration">Configuration</h2>
 <p>To change the default behaviour of the slider you can configure the slider 
 by adding the following optional setting:</p>
-<pre><code>
+<pre><code class="lang-javascript">
     &lt;script&gt;
         jQuery(function ($) {
             var slider = $(&#39;.mis-stage&#39;).miSlider({

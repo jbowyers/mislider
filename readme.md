@@ -97,7 +97,7 @@ Please report bugs and suggestions for features to [GitHub issues](https://githu
 	and add the HTML. You can use any tags you like as long as you have
 	elements for each slide, contained within an element for the slider, contained within
 	an element for the stage. Example:
-    ```
+    ```html
     
         <div class="mis-stage">
             <ol class="mis-slider">
@@ -118,13 +118,13 @@ Please report bugs and suggestions for features to [GitHub issues](https://githu
     section below.
 1.	Reference jQuery - If jQuery is not present then add the following reference 
 	to the head of the HTML page
-    ```
+    ```html
     
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
     ```
 1.	Reference the miSlider Plugin - Add the following references after 
 	the jQuery reference in the head of the HTML page
-    ```
+    ```javascript
 
         <link href="styles/mislider.min.css" rel="stylesheet">
         <link href="styles/mislider-custom.css" rel="stylesheet">
@@ -142,7 +142,7 @@ Please report bugs and suggestions for features to [GitHub issues](https://githu
 ##Configuration
 To change the default behaviour of the slider you can configure the slider 
 by adding the following optional setting:
-```
+```javascript
 
     <script>
         jQuery(function ($) {
