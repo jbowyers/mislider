@@ -1076,7 +1076,8 @@ var MiSlider = function( stageEl, options ) {
 			// Set transform origin and current width
 			slide.css({
 				"transform-origin": "50% " + String( 50 + o.offsetV ) + "%",
-				"width": o.slideWidthCurrent
+				"width": o.slideWidthCurrent,
+                "display": "block"
 			});
 
 			// Get vertical slide offset if enabled

@@ -1,6 +1,6 @@
 
 /*  miSlider Core Styles ========================================== */
-/* Version: 0.1.10 */
+/* Version: 0.1.11 */
 
 /*  Resets */
 .mis-stage, .mis-slider, .mis-slide, .mis-container, .mis-container * {
@@ -38,8 +38,12 @@
             float: left;
             overflow: visible !important;
         }
+        .js .mis-slide {
+            display: none;
+        }
         .mis-slide.mis-current {
             z-index: 100;
+            display: block;
         }
             /*  Slide container - inserted around the contents
                 of each slide by the plugin */

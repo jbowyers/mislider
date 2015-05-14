@@ -38,8 +38,12 @@
             float: left;
             overflow: visible !important;
         }
+        .js .mis-slide {
+            display: none;
+        }
         .mis-slide.mis-current {
             z-index: 100;
+            display: block;
         }
             /*  Slide container - inserted around the contents
                 of each slide by the plugin */
