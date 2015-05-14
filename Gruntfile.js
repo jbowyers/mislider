@@ -363,9 +363,9 @@ module.exports = function (grunt) {
                     '<%= pkg.directories.demo.css %>/<%= pkg.fileNames.css %>.min.css',
                     '<%= pkg.directories.demo.js %>/<%= pkg.fileNames.js %>.min.js',
                     '<%= pkg.directories.demo.root %>/index.html',
-                    '<%= pkg.directories.templates %>/readme.html',
+                    '<%= pkg.directories.templates %>/README.html',
                     'readme.md',
-                    'readme.html'],
+                    'README.html'],
                 push: false
             }
         },
