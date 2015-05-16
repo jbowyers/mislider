@@ -1094,7 +1094,8 @@ var MiSlider = function( stageEl, options ) {
 			slide.css({
 				"transform-origin": "50% " + String( 50 + o.offsetV ) + "%",
 				"width": o.slideWidthCurrent,
-                "display": "block"
+                "display": "block",
+                "opacity": "1"
 			});
 
 			// Get vertical slide offset if enabled
