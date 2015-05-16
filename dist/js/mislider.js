@@ -170,6 +170,8 @@ var MiSlider = function( stageEl, options ) {
 	o.increment = o.optionsInit.increment;
 	// The calculated number of slides on stage
 	o.slidesOnStage = o.optionsInit.slidesOnStage;
+    // The images are loaded
+    o.imagesLoaded = true;
 
 	// Slider settings --------------------------------------------------------
 
@@ -243,12 +245,8 @@ var MiSlider = function( stageEl, options ) {
 		}
 
 		// Add classes to stage and slider
-		if ( !o.stage.hasClass( o.options.classStage ) ) {
-			o.stage.addClass( o.options.classStage );
-		}
-		if ( !o.slider.hasClass( o.options.classSlider ) ) {
-			o.slider.addClass( o.options.classSlider );
-		}
+        o.stage.addClass( o.options.classStage );
+        o.slider.addClass( o.options.classSlider );
 
 		// Normalize static options
 		if ( o.options.speed && $.isNumeric( o.options.speed ) ) {
@@ -283,7 +281,6 @@ var MiSlider = function( stageEl, options ) {
 			o.increment = parseInt( o.options.increment, 10 );
 			o.optionsInit.increment = o.increment;
 		}
-
 
 		// Add previous and next nav buttons
 		if ( o.options.navButtons ) {
@@ -354,25 +351,6 @@ var MiSlider = function( stageEl, options ) {
 		// Window events
 		$( window ).on({
 
-			// Wait for slides to load before setting up slides and nav buttons
-			"load": function() {
-
-				// Setup slides and nav buttons
-				o.slideSetup();
-				o.updateNavButtons();
-
-				// Fade in everything
-				o.stage.fadeTo( 600, 1 );
-
-				// Autoplay slides if enabled
-				o.autoplayOn( o.increment );
-
-				// Slides loaded callBack
-				if ( $.isFunction( o.options.slidesLoaded ) ) {
-					o.options.slidesLoaded();
-				}
-			},
-
 			// Reset Slider on screen resize
 			"resize": function() {
 				o.autoplayOff();
@@ -387,42 +365,63 @@ var MiSlider = function( stageEl, options ) {
 	// Setup slider ============================================================
 	o.setup = function() {
 
+        console.log('setup start');
+
 		var slidesMaxNum,
 			incrementTest,
-			slidesOffStage;
-
-		// Set Slides length
-		o.slidesLength = o.slidesLengthOrig;
-		o.indexLast = o.slidesLength - 1;
+			slidesOffStage,
+            calcSlideWidth = !( $.isNumeric( o.options.slideWidth ) && parseInt( o.options.slideWidth, 10 ) > 0 ),
+            calcStageHeight = !( $.isNumeric( o.options.stageHeight ) && parseInt( o.options.stageHeight, 10 ) > 0 );
 
 		// Get widths, heights, add slide class and container
 		o.slides.each( function() {
-			var width,
-				height,
-				slide = $(this);
 
-			// Add slide class to slide
-			if ( !slide.hasClass( o.options.classSlide ) ) {
-				slide.addClass( o.options.classSlide );
-			}
+            var slide = $( this ),
+                image = slide.find('img');
 
-			// Add slide container to slide
-			if ( !slide.children().hasClass( o.classSlideContainer ) ) {
-				slide.wrapInner( "<div class='" + o.classSlideContainer + "'></div>" );
-			}
+            o.imagesLoaded = image.prop('complete');
 
-			// Get widths and heights
-			width = slide.outerWidth();
-			height = slide.outerHeight();
+            if ( !o.imagesLoaded ) {
+                console.log('slide loaded: ' + o.imagesLoaded);
+                image.on( 'load', o.setup );
+                return false;
+            } else {
 
-			if ( width > o.slideWidthCurrent ) {
-				o.slideWidthCurrent = width;
-			}
-			if ( height > o.stageHeight ) {
-				o.stageHeight = height;
-			}
+                // Add slide class to slide
+                slide.addClass( o.options.classSlide );
+
+                // Add slide container to slide
+                if ( !slide.children().hasClass( o.classSlideContainer ) ) {
+                    slide.wrapInner( "<div class='" + o.classSlideContainer + "'></div>" );
+                }
+
+                if ( calcSlideWidth ) {
+                    // Get width
+                    var width = slide.outerWidth();
+                    if ( width > o.slideWidthCurrent ) {
+                        o.slideWidthCurrent = width;
+                    }
+                }
+                if ( calcStageHeight ) {
+                    // Get height
+                    var height = slide.outerHeight();
+                    if ( height > o.stageHeight ) {
+                        o.stageHeight = height;
+                    }
+                }
+            }
+            console.log('image height: ' + slide.outerHeight());
+            console.log('slide loaded: ' + slide.find('img').prop('complete'));
 
 		});
+
+        if (!o.imagesLoaded) {
+            return false;
+        }
+
+        // Set Slides length
+        o.slidesLength = o.slidesLengthOrig;
+        o.indexLast = o.slidesLength - 1;
 
 		// Apply presets if they exist
 		if ( $.isNumeric( o.options.slideWidth ) && parseInt( o.options.slideWidth, 10 ) > 0 ) {
@@ -432,15 +431,16 @@ var MiSlider = function( stageEl, options ) {
 			o.stageHeight = parseInt( o.options.stageHeight, 10 );
 		}
 
-		// Use modulus hack to ensure current index is within range
-		o.indexCurrent = normalizeIndex( o.indexCurrent );
-
 		// Set the stage -------------------------------------------------------
 
 		// Set CSS
 		o.stage.css({
 			"height": o.stageHeight
 		});
+        // Use modulus hack to ensure current index is within range
+        o.indexCurrent = normalizeIndex( o.indexCurrent );
+
+        console.log('stage height set: ' + o.stageHeight);
 
 		// Get Stage width - must do this after setting height
 		o.stageWidth = o.stage.outerWidth();
@@ -558,6 +558,23 @@ var MiSlider = function( stageEl, options ) {
 
 		// update navList
 		o.updateNavList( o.indexCurrent );
+
+        // Setup slides and nav buttons
+        o.slideSetup();
+        o.updateNavButtons();
+
+        // Fade in everything
+        o.stage.fadeTo( 600, 1 );
+
+        // Autoplay slides if enabled
+        o.autoplayOn( o.increment );
+
+        // Slides loaded callBack
+        if ( $.isFunction( o.options.slidesLoaded ) ) {
+            o.options.slidesLoaded();
+        }
+
+        console.log('setup finished');
 
 		return this;
 	};
