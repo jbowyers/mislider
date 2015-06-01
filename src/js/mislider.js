@@ -365,8 +365,6 @@ var MiSlider = function( stageEl, options ) {
 	// Setup slider ============================================================
 	o.setup = function() {
 
-        console.log('setup start');
-
 		var slidesMaxNum,
 			incrementTest,
 			slidesOffStage,
@@ -382,7 +380,6 @@ var MiSlider = function( stageEl, options ) {
             o.imagesLoaded = image.prop('complete');
 
             if ( !o.imagesLoaded ) {
-                console.log('slide loaded: ' + o.imagesLoaded);
                 image.on( 'load', o.setup );
                 return false;
             } else {
@@ -410,8 +407,6 @@ var MiSlider = function( stageEl, options ) {
                     }
                 }
             }
-            console.log('image height: ' + slide.outerHeight());
-            console.log('slide loaded: ' + slide.find('img').prop('complete'));
 
 		});
 
@@ -439,8 +434,6 @@ var MiSlider = function( stageEl, options ) {
 		});
         // Use modulus hack to ensure current index is within range
         o.indexCurrent = normalizeIndex( o.indexCurrent );
-
-        console.log('stage height set: ' + o.stageHeight);
 
 		// Get Stage width - must do this after setting height
 		o.stageWidth = o.stage.outerWidth();
@@ -573,8 +566,6 @@ var MiSlider = function( stageEl, options ) {
         if ( $.isFunction( o.options.slidesLoaded ) ) {
             o.options.slidesLoaded();
         }
-
-        console.log('setup finished');
 
 		return this;
 	};
