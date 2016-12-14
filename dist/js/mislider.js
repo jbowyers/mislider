@@ -188,6 +188,8 @@ var MiSlider = function( stageEl, options ) {
 	o.slidesContinuous = o.optionsInit.slidesContinuous;
 	// The normalized pause value
 	o.pause = o.optionsInit.pause;
+	// Transition to clicked slide instead of visting URL
+	o.slideClickable = o.optionsInit.slideClickable;
 
 	// Functions --------------------------------------------------------------
 
