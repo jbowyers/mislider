@@ -67,6 +67,9 @@ var MiSlider = function( stageEl, options ) {
 		offsetV: 0,
 		// Center slide contents vertically - Boolean.
 		centerV: false,
+		// Transition to clicked slide instead of visting URL
+		// Boolean.
+		slideClickable: true,
 		// Enable numbered list navigation - Boolean.
 		navList: true,
 		// Enable prev and next button navigation - Boolean.
@@ -301,8 +304,8 @@ var MiSlider = function( stageEl, options ) {
 
 		// Add event handlers ---------------------------------------------------
 
-		// Add click events to slides
-		if ( o.slidesOnStage > 1 ) {
+		// Add click events to slides if active
+		if ( o.slidesOnStage > 1 && !o.slideClickable) {
 			o.slider.on( "click", o.options.selectorSlide, function( e ) {
 				if ( $( this ).index() !== o.indexCurrent ) {
 					e.preventDefault();

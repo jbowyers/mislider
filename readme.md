@@ -57,6 +57,7 @@ The following are setting that can be customized:
 *   Vertical offset of the slide center - 
     Useful when slide images are not in the 
     center of the slide
+*   Transition to clicked slide
 *   Center slide contents vertically - 
     Centers oversized slides vertically
 *   Enable & disable Navigation Dots
@@ -199,6 +200,9 @@ by adding the following optional setting:
                 //  Center slide contents vertically
                 //  Boolean.
                 centerV: false,
+                // Transition to clicked slide instead of visting URL
+                // Boolean.
+                slideClickable: true,
                 //  Enable numbered list navigation
                 //  Boolean.
                 navList: true,
