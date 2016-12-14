@@ -55,7 +55,7 @@
     <div class="mis-stage">
         <!-- The element to select and apply miSlider to - the class is optional -->
         <ol class="mis-slider">
-            <!-- The slider element - the class is optional -->
+            <!-- The slider element - the class is optional - Set width of slide using CSS on this element -->
             <li class="mis-slide">
                 <!-- A slide element - the class is optional -->
                 <a href="#" class="mis-container">
@@ -168,6 +168,7 @@ Other slides are scaled down. </li>
 <li>Vertical offset of the slide center - 
 Useful when slide images are not in the 
 center of the slide</li>
+<li>Transition to clicked slide</li>
 <li>Center slide contents vertically - 
 Centers oversized slides vertically</li>
 <li>Enable &amp; disable Navigation Dots</li>
@@ -222,7 +223,6 @@ if absent. By default, miSlider is designed to work with an ordered list as
 demonstrated above. If you want to use different elements be sure to change
 the &#39;selectorSlider&#39; and &#39;selectorSlide&#39; options as defined in the Configuration
 section below.</p>
-    <p>To have more than 1 slide on screen you need to set the width of the mis-slide element using CSS </p>
 </li>
 <li><p>Reference jQuery - If jQuery is not present then add the following reference 
 to the head of the HTML page</p>
@@ -304,6 +304,9 @@ by adding the following optional setting:</p>
                 //  Center slide contents vertically
                 //  Boolean.
                 centerV: false,
+                // Transition to clicked slide instead of visting URL
+                // Boolean.
+                slideClickable: true,
                 //  Enable numbered list navigation
                 //  Boolean.
                 navList: true,
