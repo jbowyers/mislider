@@ -1,6 +1,6 @@
 /**
  * miSlider
- * Version: 0.1.12
+ * Version: 0.1.13
  * URL: private
  * Description: A multi-item slider for displaying one or more items per slide
  * Requires: jQuery

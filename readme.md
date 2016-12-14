@@ -6,7 +6,7 @@ images or slides of content. The slider can be configured to
 display one slide at a time, as many slides as possible 
 or anything in between.
 
-**Version: 0.1.12**  
+**Version: 0.1.13**  
 **Contributors**: jbowyers  
 **Donate link**:  
 **Tags**: slider, jQuery, plugin, carousel, image, gallery, multiple, images  
